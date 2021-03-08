@@ -12,11 +12,13 @@ class ResgisterViewModel @Inject constructor() : ViewModel() {
     init {
         userProfile.value =
                 UserBuilder(
-                        dni = it.dni,
-                        userName = it.displayName,
-                        birthDate = it.birthDate,
-                        mail = it.email!!
-
+                        dni = "",
+                        userName = "",
+                        firstSurname = "",
+                        secondSurname = "",
+                        birthDate = "",
+                        mail = "",
+                        phoneNumber = ""
                 )
     }
 
@@ -26,6 +28,7 @@ class ResgisterViewModel @Inject constructor() : ViewModel() {
 
         if (user.dni.isNullOrEmpty()){
             showError = true
+
         }
 
         if (user.userName.isNullOrEmpty()){
