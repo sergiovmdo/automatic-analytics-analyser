@@ -1,9 +1,9 @@
 package com.example.automatic_analytics_analyser.di.module
 
 import com.example.automatic_analytics_analyser.view.IntroActivity
-import com.example.automatic_analytics_analyser.view.LoginActivity
+import com.example.automatic_analytics_analyser.view.user.LoginActivity
 import com.example.automatic_analytics_analyser.view.MainActivity
-import com.example.automatic_analytics_analyser.view.RegisterActivity
+import com.example.automatic_analytics_analyser.view.user.RegisterActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

@@ -1,4 +1,4 @@
-package com.example.automatic_analytics_analyser.view
+package com.example.automatic_analytics_analyser.view.user
 
 import android.content.Intent
 import android.os.Bundle

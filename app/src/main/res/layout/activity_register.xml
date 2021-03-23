@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.automatic_analytics_analyser.view.ResgisterViewModel" />
+            type="com.example.automatic_analytics_analyser.view.user.ResgisterViewModel" />
 
         <import type="android.graphics.Color" />
     </data>
@@ -15,7 +15,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_register"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#e0fffc">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/registerTitle"
@@ -28,8 +29,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="#333333"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <ScrollView
@@ -67,7 +67,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textCapWords"
-                        android:text="@={viewModel.userProfile.dni}" />
+                        android:text="@={viewModel.userProfile.dni}"
+                        />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,7 +90,29 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:text="@={viewModel.userProfile.dni}" />
+                        android:text="@={viewModel.userProfile.password}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/confirm_password_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="Confirma tu contraseña"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dni_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/confirm_password_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:text="@={viewModel.userProfile.confirmPassword}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,7 +128,7 @@
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/password_layout">
+                    app:layout_constraintTop_toBottomOf="@+id/confirm_password_layout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/name_edit_text"
@@ -174,6 +197,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:hint="Fecha de nacimiento"
+                    app:placeholderText="18/07/2017"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/email_layout">
@@ -182,8 +206,8 @@
                         android:id="@+id/birth_edit_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="1234567890"
-                        android:inputType="number"
+                        android:digits="1234567890/"
+                        android:inputType="date"
                         android:scrollbars="vertical"
                         android:text="@={viewModel.userProfile.birthDate}" />
 
@@ -244,14 +268,15 @@
             android:id="@+id/materialButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:layout_marginTop="32dp"
-            android:onClick="@{viewModel.next}"
+            android:onClick="@{viewModel.register}"
             android:text="Registrarse"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
 
+            android:backgroundTint="#3cb0cd"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

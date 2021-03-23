@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.automatic_analytics_analyser.di.util.ViewModelFactory
 import com.example.automatic_analytics_analyser.di.util.ViewModelKey
-import com.example.automatic_analytics_analyser.view.LoginViewModel
-import com.example.automatic_analytics_analyser.view.ResgisterViewModel
+import com.example.automatic_analytics_analyser.view.user.LoginViewModel
+import com.example.automatic_analytics_analyser.view.user.ResgisterViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

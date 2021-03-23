@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.automatic_analytics_analyser.view.LoginViewModel" />
+            type="com.example.automatic_analytics_analyser.view.user.LoginViewModel" />
 
         <import type="android.graphics.Color" />
     </data>
@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#BDC667">
+        android:background="#e0fffc">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageView"
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="64dp"
             android:layout_marginEnd="32dp"
             android:hint="DNI"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,9 +92,9 @@
             android:layout_gravity="center"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="128dp"
-            android:backgroundTint="#77966D"
+            android:backgroundTint="#3cb0cd"
             android:gravity="center"
-
+            android:textColor="@color/white"
             android:text="Inicia Sesión"
 
             app:cornerRadius="25dp"
