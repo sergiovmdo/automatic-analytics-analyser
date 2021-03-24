@@ -11,7 +11,7 @@ class UserManagmentRepository @Inject constructor(val api: ApiService){
     //Suspend is to make it asynchronous
     suspend fun createUser(user: UserBuilder) : String {
         val response = api.newUser(user)
-        return response.body().toString()
+        return response.token
     }
 
 }
