@@ -8,7 +8,7 @@ import retrofit2.http.POST
 
 interface ApiService {
     @POST("register")
-    suspend fun newUser(@Body user: UserBuilder): Response<Unit>
+    suspend fun newUser(@Body user: UserBuilder): Response<String>
 
     @GET("login")
     suspend fun getUser(): Response<UserBuilder>
