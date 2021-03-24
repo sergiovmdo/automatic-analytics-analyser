@@ -2,7 +2,7 @@ package com.example.automatic_analytics_analyser.model
 
 data class UserBuilder (
     var dni: String,
-    var userName: String,
+    var name: String,
     var firstSurname: String,
     var secondSurname: String,
     var password: String,

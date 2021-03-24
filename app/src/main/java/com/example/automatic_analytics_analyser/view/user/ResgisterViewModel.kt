@@ -13,7 +13,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
-class ResgisterViewModel @Inject constructor(val repository: UserManagmentRepository) : ViewModel() {
+class ResgisterViewModel @Inject constructor(val repository: UserManagmentRepository) :
+    ViewModel() {
     val userProfile = MutableLiveData<UserBuilder>()
 
     private val _registerError = MutableLiveData<ErrorType>()
@@ -41,7 +42,7 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
                 dni = "333",
                 password = "pepe",
                 confirmPassword = "pepe",
-                userName = "pepe",
+                name = "pepe",
                 firstSurname = "pepe",
                 secondSurname = "pepe",
                 birthDate = "06/09/1997",
@@ -73,7 +74,7 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
             errorType = "Las contraseñas no coinciden"
         }
 
-        if (user.userName.isNullOrEmpty()) {
+        if (user.name.isNullOrEmpty()) {
             showError = true
             errorType = "Este campo es obligatorio"
         }
@@ -95,11 +96,11 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
             val today = Calendar.getInstance()
             try {
                 val userBirthDate = dateFormat.parse(user.birthDate)
-                if (userBirthDate > today.time){
+                if (userBirthDate > today.time) {
                     showError = true
                     errorType = "Fecha inválida"
                 }
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 showError = true
                 errorType = "Fecha inválida"
             }
@@ -109,8 +110,6 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
             showError = true
             errorType = "Tienes que añadir al menos un método de contacto"
         }
-
-
 
         if (!showError) {
             //Save the user into DB and go back to login activity

@@ -136,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
                         android:scrollbars="vertical"
-                        android:text="@={viewModel.userProfile.userName}" />
+                        android:text="@={viewModel.userProfile.name}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
