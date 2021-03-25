@@ -10,14 +10,12 @@ import androidx.lifecycle.ViewModelProviders
 import dagger.android.support.DaggerAppCompatActivity
 import com.example.automatic_analytics_analyser.R
 import com.example.automatic_analytics_analyser.databinding.ActivityLoginBinding
+import com.example.automatic_analytics_analyser.view.AbstractActivity
 import com.example.automatic_analytics_analyser.view.MainActivity
 import javax.inject.Inject
 
-class LoginActivity : DaggerAppCompatActivity() {
+class LoginActivity : AbstractActivity() {
     private val TAG = "LoginActivity"
-
-    @Inject
-    internal lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var binding: ActivityLoginBinding
 

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.automatic_analytics_analyser.di.util.ViewModelFactory
 import com.example.automatic_analytics_analyser.di.util.ViewModelKey
+import com.example.automatic_analytics_analyser.view.MainActivityViewModel
 import com.example.automatic_analytics_analyser.view.user.LoginViewModel
 import com.example.automatic_analytics_analyser.view.user.ResgisterViewModel
 import dagger.Binds
@@ -22,6 +23,12 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ResgisterViewModel::class)
     abstract fun registerViewModel(viewModel: ResgisterViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainActivityViewModel::class)
+    abstract fun mainActivityViewModel(viewModel: MainActivityViewModel): ViewModel
+
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

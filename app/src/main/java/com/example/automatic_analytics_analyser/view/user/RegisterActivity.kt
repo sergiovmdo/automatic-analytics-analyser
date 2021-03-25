@@ -13,15 +13,13 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.automatic_analytics_analyser.R
 import com.example.automatic_analytics_analyser.databinding.ActivityRegisterBinding
 import com.example.automatic_analytics_analyser.model.ErrorType
+import com.example.automatic_analytics_analyser.view.AbstractActivity
 import com.example.automatic_analytics_analyser.view.MainActivity
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class RegisterActivity : DaggerAppCompatActivity() {
+class RegisterActivity : AbstractActivity() {
     private val TAG = "RegisterActivity"
-
-    @Inject
-    internal lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var preferences: SharedPreferences;

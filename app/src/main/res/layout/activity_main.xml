@@ -1,113 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="16dp"
-    android:paddingTop="16dp"
-    android:orientation="vertical"
-    android:background="#e0fffc">
-    <TextView
-        android:id="@+id/user_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/open_sans_semibold"
-        android:text="@string/welcome"
-        android:textColor="#333333"
-        android:textSize="24sp" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/welcome_part1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/welcome_part2"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#333333" />
+    <data>
 
-    <TextView
-        android:id="@+id/welcome_part2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <variable
+            name="viewModel"
+            type="com.example.automatic_analytics_analyser.view.MainActivityViewModel" />
 
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/open_sans_light"
-        android:text="@string/welcome_part2.1"
-        android:textColor="#333333" />
+        <import type="android.graphics.Color" />
+    </data>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e0fffc"
         android:orientation="vertical"
-        android:paddingTop="8dp">
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+        <ImageButton
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ic_baseline_settings_24"
+            android:backgroundTint="@color/black"
+            app:icon="@drawable/ic_baseline_settings_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/analysis_button"
-                style="@style/Widget.MaterialComponents.Button.Icon"
+
+        <TextView
+            android:id="@+id/user_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@string/welcome"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/welcome_part1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_light"
+            android:text="@string/welcome_part2"
+            android:textColor="#333333"
+
+            app:layout_constraintStart_toStartOf="@+id/welcome_part2"
+            app:layout_constraintTop_toBottomOf="@+id/user_welcome" />
+
+        <TextView
+            android:id="@+id/welcome_part2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/open_sans_light"
+            android:text="@string/welcome_part2.1"
+            android:textColor="#333333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/welcome_part1" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:paddingTop="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_part2">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F4CCE9"
-                android:drawableBottom="@drawable/ic_blood_sample"
-                android:paddingBottom="50dp"
-                android:text="Análisis"
-                android:textColor="#333333" />
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/medication_button"
-                style="@style/Widget.MaterialComponents.Button.Icon"
+                <Button
+                    android:id="@+id/analysis_button"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#F4CCE9"
+                    android:drawableBottom="@drawable/ic_blood_sample"
+                    android:paddingBottom="50dp"
+                    android:text="Análisis"
+                    android:textColor="#333333" />
+
+                <Button
+                    android:id="@+id/medication_button"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#AFFFB0"
+                    android:drawableBottom="@drawable/ic_medicine"
+                    android:paddingBottom="50dp"
+                    android:text="Medicación"
+                    android:textColor="#333333" />
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="#AFFFB0"
-                android:drawableBottom="@drawable/ic_medicine"
-                android:paddingBottom="50dp"
-                android:text="Medicación"
-                android:textColor="#333333" />
+
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/calendar_button"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#C3DFFF"
+                    android:drawableBottom="@drawable/ic_calendar"
+                    android:paddingBottom="50dp"
+                    android:text="Calendario"
+                    android:textColor="#333333" />
+
+                <Button
+                    android:id="@+id/chat_button"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#E3E0D8"
+                    android:drawableBottom="@drawable/ic_asistencia_medica"
+                    android:paddingBottom="50dp"
+                    android:text="Chat"
+                    android:textColor="#333333" />
+            </LinearLayout>
+
         </LinearLayout>
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/calendar_button"
-                style="@style/Widget.MaterialComponents.Button.Icon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:backgroundTint="#C3DFFF"
-                android:drawableBottom="@drawable/ic_calendar"
-                android:paddingBottom="50dp"
-                android:text="Calendario"
-                android:textColor="#333333" />
-
-            <Button
-                android:id="@+id/chat_button"
-                style="@style/Widget.MaterialComponents.Button.Icon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="1"
-                android:backgroundTint="#E3E0D8"
-                android:drawableBottom="@drawable/ic_asistencia_medica"
-                android:paddingBottom="50dp"
-                android:text="Chat"
-                android:textColor="#333333" />
-        </LinearLayout>
-
-    </LinearLayout>
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
