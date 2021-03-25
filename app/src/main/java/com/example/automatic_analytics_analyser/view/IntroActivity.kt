@@ -17,7 +17,7 @@ class IntroActivity : DaggerAppCompatActivity() {
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this)
 
-        if (!preferences.getBoolean("logged", false)) {
+        if (/*!preferences.getBoolean("logged", false)*/ true) {
             startActivityForResult(Intent(this, LoginActivity::class.java), 40)
         } else {
             startActivity(Intent(this, MainActivity::class.java))

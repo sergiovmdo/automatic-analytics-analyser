@@ -9,6 +9,7 @@ import com.example.automatic_analytics_analyser.model.UserBuilder
 import java.lang.Exception
 import androidx.lifecycle.viewModelScope
 import com.example.automatic_analytics_analyser.data.repositories.UserManagmentRepository
+import com.example.automatic_analytics_analyser.model.ErrorType
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -18,29 +19,17 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
     ViewModel() {
     val userProfile = MutableLiveData<UserBuilder>()
 
-    private val _registerError = MutableLiveData<Pair<ErrorType, String>>()
-    val registerError: LiveData<Pair<ErrorType, String>>
+    private val _registerError = MutableLiveData<ErrorType>()
+    val registerError: LiveData<ErrorType>
         get() {
             return _registerError
         }
 
-    private val _registerCompleted = MutableLiveData<Boolean>()
-    val registerCompleted: LiveData<Boolean>
+    private val _registerCompleted = MutableLiveData<String>()
+    val registerCompleted: LiveData<String>
         get() = _registerCompleted
 
-    enum class ErrorType {
-        DNI,
-        WRONG_DNI,
-        PASSWORD,
-        CONFIRM_PASSWORD,
-        PASSWORD_MATCH,
-        NAME,
-        SURNAME,
-        BIRTHDATE,
-        WRONG_BIRTHDATE,
-        CONTACT_METHOD,
-        API_PROBLEM
-    }
+
 
     init {
         userProfile.value =
@@ -65,7 +54,7 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
         if (user.dni.isNullOrEmpty()) {
             showError = true
             errorType = "Este campo es obligatorio"
-            _registerError.value = Pair(ErrorType.DNI, errorType)
+            _registerError.value = ErrorType.DNI
         } else {
             //TODO: Check if DNI is correct
         }
@@ -73,35 +62,35 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
         if (user.password.isNullOrEmpty()) {
             showError = true;
             errorType = "Este campo es obligatorio"
-            _registerError.value = Pair(ErrorType.PASSWORD, errorType)
+            _registerError.value = ErrorType.PASSWORD
         }
 
         if (user.confirmPassword.isNullOrEmpty()) {
             showError = true;
             errorType = "Este campo es obligatorio"
-            _registerError.value = Pair(ErrorType.CONFIRM_PASSWORD, errorType)
+            _registerError.value = ErrorType.CONFIRM_PASSWORD
         } else if (!user.password.equals(user.confirmPassword)) {
             showError = true
             errorType = "Las contraseñas no coinciden"
-            _registerError.value = Pair(ErrorType.PASSWORD_MATCH, errorType)
+            _registerError.value = ErrorType.PASSWORD_MATCH
         }
 
         if (user.name.isNullOrEmpty()) {
             showError = true
             errorType = "Este campo es obligatorio"
-            _registerError.value = Pair(ErrorType.NAME, errorType)
+            _registerError.value = ErrorType.NAME
         }
 
         if (user.firstSurname.isNullOrEmpty()) {
             showError = true
             errorType = "Este campo es obligatorio"
-            _registerError.value = Pair(ErrorType.SURNAME, errorType)
+            _registerError.value = ErrorType.SURNAME
         }
 
         if (user.birthDate.isNullOrEmpty()) {
             showError = true
             errorType = "Este campo es obligatorio"
-            _registerError.value = Pair(ErrorType.BIRTHDATE, errorType)
+            _registerError.value = ErrorType.BIRTHDATE
         } else {
             val dateFormat = SimpleDateFormat("dd/MM/yyyy")
             val today = Calendar.getInstance()
@@ -110,19 +99,19 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
                 if (userBirthDate > today.time) {
                     showError = true
                     errorType = "Fecha inválida"
-                    _registerError.value = Pair(ErrorType.WRONG_BIRTHDATE, errorType)
+                    _registerError.value = ErrorType.WRONG_BIRTHDATE
                 }
             } catch (e: Exception) {
                 showError = true
                 errorType = "Fecha inválida"
-                _registerError.value = Pair(ErrorType.WRONG_BIRTHDATE, errorType)
+                _registerError.value = ErrorType.WRONG_BIRTHDATE
             }
         }
 
         if (user.mail.isNullOrEmpty() && user.phoneNumber.isNullOrEmpty()) {
             showError = true
             errorType = "Tienes que añadir al menos un método de contacto"
-            _registerError.value = Pair(ErrorType.CONTACT_METHOD, errorType)
+            _registerError.value = ErrorType.CONTACT_METHOD
         }
 
         if (!showError) {
@@ -131,9 +120,9 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
                 val token = repository.createUser(user)
                 if (token.isNullOrEmpty()) {
                     _registerError.value =
-                        Pair(ErrorType.API_PROBLEM, "No se ha podido crear el usuario")
+                        ErrorType.API_PROBLEM
                 } else {
-
+                    _registerCompleted.value = token
                 }
             }
         }

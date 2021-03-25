@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:text="" />
+                android:text="@={viewModel.loginProfile.dni}"  />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:text="" />
+                android:text="@={viewModel.loginProfile.password}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,7 +96,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:text="Inicia Sesión"
-
+            android:onClick="@{viewModel.login}"
             app:cornerRadius="25dp"
             app:iconTintMode="add"
             app:layout_constraintTop_toBottomOf="@+id/password_layout"
