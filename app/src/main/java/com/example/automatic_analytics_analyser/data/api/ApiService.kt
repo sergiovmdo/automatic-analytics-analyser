@@ -12,6 +12,6 @@ interface ApiService {
     @POST("register")
     suspend fun newUser(@Body user: UserBuilder): TokenResponse
 
-    @GET("login")
+    @POST("login")
     suspend fun getUser(@Body user: LoginUser): TokenResponse
 }

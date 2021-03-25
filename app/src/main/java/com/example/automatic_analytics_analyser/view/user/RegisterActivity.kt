@@ -44,6 +44,7 @@ class RegisterActivity : DaggerAppCompatActivity() {
 
         viewModel.registerCompleted.observe(this, Observer {
             if (!it.isNullOrEmpty()){
+                //TODO: Move this to the repository
                 //Set the logged state on preferences
                 if (preferences.getBoolean("logged", false)){
                     preferences.edit().putBoolean("logged", true).apply()
