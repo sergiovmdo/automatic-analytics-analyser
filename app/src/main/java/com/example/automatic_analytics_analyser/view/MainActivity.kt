@@ -1,5 +1,6 @@
 package com.example.automatic_analytics_analyser.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -26,7 +27,7 @@ class MainActivity : AbstractActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
+        initNavigationListeners()
 
     }
 
@@ -45,6 +46,10 @@ class MainActivity : AbstractActivity() {
 
         binding.medicationButton.setOnClickListener{
 
+        }
+
+        binding.settingsButton.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
     }
 }
