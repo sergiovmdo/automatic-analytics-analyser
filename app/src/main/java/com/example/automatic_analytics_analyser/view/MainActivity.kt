@@ -33,7 +33,7 @@ class MainActivity : AbstractActivity() {
 
     private fun initNavigationListeners() {
         binding.analysisButton.setOnClickListener{
-
+            startActivity(Intent(this, BloodTestsActivity::class.java))
         }
 
         binding.calendarButton.setOnClickListener{

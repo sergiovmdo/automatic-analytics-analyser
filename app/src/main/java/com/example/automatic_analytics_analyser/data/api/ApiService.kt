@@ -1,9 +1,6 @@
 package com.example.automatic_analytics_analyser.data.api
 
-import com.example.automatic_analytics_analyser.model.LoginUser
-import com.example.automatic_analytics_analyser.model.TokenResponse
-import com.example.automatic_analytics_analyser.model.User
-import com.example.automatic_analytics_analyser.model.UserBuilder
+import com.example.automatic_analytics_analyser.model.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -18,5 +15,8 @@ interface ApiService {
     suspend fun getUserProfile(@Header("Authorization") token: String): User
 
     @PUT("user")
-    suspend fun changePassword(@Body token: String): Boolean
+    suspend fun changePassword(
+        @Header("Authorization") token: String,
+        @Body password: Password
+    ): Response<Boolean>
 }

@@ -47,6 +47,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@={viewModel.user.name}"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/user_welcome"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:id="@+id/welcome_part1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

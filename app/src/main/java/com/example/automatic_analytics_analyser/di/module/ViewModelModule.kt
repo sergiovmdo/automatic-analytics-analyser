@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.automatic_analytics_analyser.di.util.ViewModelFactory
 import com.example.automatic_analytics_analyser.di.util.ViewModelKey
+import com.example.automatic_analytics_analyser.view.BloodTestsViewModel
 import com.example.automatic_analytics_analyser.view.MainActivityViewModel
 import com.example.automatic_analytics_analyser.view.SettingsViewModel
 import com.example.automatic_analytics_analyser.view.user.LoginViewModel
@@ -34,6 +35,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SettingsViewModel::class)
     abstract fun settingsActivityViewModel(viewModel: SettingsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BloodTestsViewModel::class)
+    abstract fun bloodTestsActivityViewModel(viewModel: BloodTestsViewModel): ViewModel
 
 
     @Binds

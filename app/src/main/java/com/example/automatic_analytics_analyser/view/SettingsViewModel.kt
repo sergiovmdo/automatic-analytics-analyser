@@ -26,6 +26,7 @@ class SettingsViewModel @Inject constructor(val repository: UserManagmentReposit
 
         changePassword.value =
             Password(
+                currentPassword = "",
                 password = "",
                 confirmPassword = ""
             )
@@ -35,19 +36,35 @@ class SettingsViewModel @Inject constructor(val repository: UserManagmentReposit
         val password = changePassword.value!!
         var showError = false
 
-        if (password.password.isNullOrEmpty()){
+        if (password.password.isNullOrEmpty()) {
             showError = true
             _changePasswordError.value = ErrorType.PASSWORD
         }
 
-        if (password.confirmPassword.isNullOrEmpty()){
+        if (password.confirmPassword.isNullOrEmpty()) {
             showError = true
             _changePasswordError.value = ErrorType.CONFIRM_PASSWORD
         }
 
-        if(!showError && !password.password.equals(password.confirmPassword)){
+        if (!showError && !password.password.equals(password.confirmPassword)) {
             showError = true
             _changePasswordError.value = ErrorType.PASSWORD_MATCH
+        }
+
+        if (!showError) {
+            viewModelScope.launch {
+                val response = repository.changePassword(
+                    Password(
+                        password.currentPassword,
+                        password.password,
+                        password.currentPassword
+                    )
+                )
+                if (!response) {
+                    //TODO: Error treatment
+                }
+            }
+
         }
     }
 }

@@ -4,10 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.example.automatic_analytics_analyser.data.api.ApiService
-import com.example.automatic_analytics_analyser.model.LoginUser
-import com.example.automatic_analytics_analyser.model.TokenResponse
-import com.example.automatic_analytics_analyser.model.User
-import com.example.automatic_analytics_analyser.model.UserBuilder
+import com.example.automatic_analytics_analyser.model.*
 import com.example.automatic_analytics_analyser.view.MainActivity
 import retrofit2.Call
 import javax.inject.Inject
@@ -47,8 +44,8 @@ class UserManagmentRepository @Inject constructor(val api: ApiService, val conte
         return response
     }
 
-    suspend fun changePassword(): Boolean {
-        return api.changePassword(token)
+    suspend fun changePassword(password: Password): Boolean {
+        return api.changePassword(token, password).body()!!
     }
 
 }

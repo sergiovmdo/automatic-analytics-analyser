@@ -1,5 +1,6 @@
 package com.example.automatic_analytics_analyser.di.module
 
+import com.example.automatic_analytics_analyser.view.BloodTestsActivity
 import com.example.automatic_analytics_analyser.view.IntroActivity
 import com.example.automatic_analytics_analyser.view.user.LoginActivity
 import com.example.automatic_analytics_analyser.view.MainActivity
@@ -24,4 +25,7 @@ abstract class ActivitiesModule {
 
     @ContributesAndroidInjector
     abstract fun contributeSettingsActivity() : SettingsActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeBloodTestsActivity() : BloodTestsActivity
 }

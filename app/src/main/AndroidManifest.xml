@@ -36,6 +36,10 @@
         <activity
             android:name=".view.SettingsActivity"
             android:label="" />
+        <activity
+            android:name=".view.BloodTestsActivity"
+            android:label=""
+            android:theme="@style/Drawer"/>
 
         <meta-data
             android:name="preloaded_fonts"

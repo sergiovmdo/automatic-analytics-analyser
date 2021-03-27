@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
 
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="@={viewModel.user.mail}"
@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
 
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="@={viewModel.user.phoneNumber}"
@@ -136,9 +136,9 @@
                     android:id="@+id/actual_password_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
+                    android:inputType="textPassword"
 
-                    android:text="" />
+                    android:text="@={viewModel.changePassword.currentPassword}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,8 +159,8 @@
                     android:id="@+id/new_password_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
-                    android:text="" />
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.changePassword.password}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -181,7 +181,7 @@
                     android:id="@+id/confirm_password_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
+                    android:inputType="textPassword"
                     android:text="@={viewModel.changePassword.confirmPassword}" />
 
             </com.google.android.material.textfield.TextInputLayout>
