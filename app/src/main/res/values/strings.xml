@@ -3,4 +3,9 @@
     <string name="welcome">Bienvenida Andrea.</string>
     <string name="welcome_part2">Esto es tu centro de control digital de salud</string>
     <string name="welcome_part2.1">¿Qué te gustaría consultar?</string>
+
+    <string-array name="languages">
+        <item>Castellano</item>
+        <item>Català</item>
+    </string-array>
 </resources>

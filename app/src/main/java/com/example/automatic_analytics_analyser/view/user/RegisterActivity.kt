@@ -42,13 +42,6 @@ class RegisterActivity : AbstractActivity() {
 
         viewModel.registerCompleted.observe(this, Observer {
             if (!it.isNullOrEmpty()){
-                //TODO: Move this to the repository
-                //Set the logged state on preferences
-                if (preferences.getBoolean("logged", false)){
-                    preferences.edit().putBoolean("logged", true).apply()
-                }
-                preferences.edit().putString("token", it)
-
                 Log.v(TAG, "Navigating to main screen after registering")
                 startActivity(Intent(this, MainActivity::class.java))
             }

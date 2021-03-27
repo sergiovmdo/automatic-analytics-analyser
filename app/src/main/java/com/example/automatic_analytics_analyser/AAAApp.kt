@@ -2,6 +2,7 @@ package com.example.automatic_analytics_analyser
 
 import android.app.Application
 import com.example.automatic_analytics_analyser.di.injector.initInjector
+import com.facebook.stetho.Stetho
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -15,6 +16,7 @@ class AAAApp : Application(), HasAndroidInjector {
         super.onCreate()
 
         initInjector(this)
+        Stetho.initializeWithDefaults(this)
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector

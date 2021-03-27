@@ -35,7 +35,6 @@ class LoginViewModel @Inject constructor(val repository: UserManagmentRepository
     fun login(view: View) {
         val user = loginProfile.value!!
         var showError = false
-        var errorType = "Este campo es obligatorio"
 
         if (user.dni.isNullOrEmpty()){
             showError = true

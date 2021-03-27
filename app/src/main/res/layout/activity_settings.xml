@@ -64,7 +64,7 @@
                 android:layout_marginTop="16dp"
 
                 android:fontFamily="@font/open_sans_semibold"
-                android:text="blablabla@gmail.com"
+                android:text="@={viewModel.user.mail}"
                 android:textColor="#777777"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email_text" />
@@ -90,7 +90,7 @@
                 android:layout_marginTop="16dp"
 
                 android:fontFamily="@font/open_sans_semibold"
-                android:text="613613613"
+                android:text="@={viewModel.user.phoneNumber}"
                 android:textColor="#777777"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phone_text" />
@@ -182,7 +182,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textCapWords"
-                    android:text="" />
+                    android:text="@={viewModel.changePassword.confirmPassword}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -197,7 +197,7 @@
                 android:layout_marginEnd="32dp"
                 android:backgroundTint="#3cb0cd"
                 android:gravity="center"
-                android:onClick=""
+                android:onClick="@{viewModel.changePasswordAction}"
                 android:text="Confirmar"
                 android:textColor="@color/white"
                 app:cornerRadius="25dp"
@@ -242,11 +242,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/view3">
 
                 <AutoCompleteTextView
-                    android:id="@+id/categoriesDropdown"
+                    android:id="@+id/languagesDropdown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="50dp"
-                    android:text=""
+                    android:text="@={viewModel.user.language}"
                     tools:ignore="LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>

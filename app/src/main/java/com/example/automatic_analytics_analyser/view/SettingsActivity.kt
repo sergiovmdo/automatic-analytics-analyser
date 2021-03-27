@@ -1,6 +1,7 @@
 package com.example.automatic_analytics_analyser.view
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.automatic_analytics_analyser.R
@@ -24,5 +25,14 @@ class SettingsActivity : AbstractActivity() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        val spinner = binding.languagesDropdown
+        spinner.setAdapter(
+            ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                resources.getStringArray(R.array.languages)
+            )
+        )
     }
 }
