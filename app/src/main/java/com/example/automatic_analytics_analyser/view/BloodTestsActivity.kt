@@ -1,14 +1,17 @@
 package com.example.automatic_analytics_analyser.view
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.preference.PreferenceManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.automatic_analytics_analyser.R
 import com.example.automatic_analytics_analyser.databinding.ActivityBloodTestsBinding
+import com.example.automatic_analytics_analyser.view.user.LoginActivity
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.materialdrawer.iconics.iconicsIcon
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
@@ -72,29 +75,51 @@ class BloodTestsActivity : AbstractActivity() {
         binding.slider.apply {
             itemAdapter.add(
                 PrimaryDrawerItem().apply {
-                    nameRes = R.string.blood_tests_screen
+                    nameRes = R.string.main_screen
                     identifier = 1L
+                    iconRes = R.drawable.ic_logo_background
+
+                },
+                PrimaryDrawerItem().apply {
+                    nameRes = R.string.blood_tests_screen
+                    identifier = 2L
+                    iconRes = R.drawable.ic_blood_sample
 
                 },
                 PrimaryDrawerItem().apply {
                     nameRes = R.string.medication_screen
-                    identifier = 2L
+                    identifier = 3L
+                    iconRes = R.drawable.ic_medicine
 
                 },
                 PrimaryDrawerItem().apply {
                     nameRes = R.string.calendar_screen
-                    identifier = 3L
+                    identifier = 4L
+                    iconRes = R.drawable.ic_calendar
 
                 },
                 PrimaryDrawerItem().apply {
                     nameRes = R.string.chat_screen
-                    identifier = 4L
+                    identifier = 5L
+                    iconRes = R.drawable.ic_asistencia_medica
 
                 }
             )
             onDrawerItemClickListener = { _, drawerItem, _ ->
-                when(drawerItem.identifier) {
-                    1L -> startActivity(Intent(this@BloodTestsActivity, BloodTestsActivity::class.java))
+                when (drawerItem.identifier) {
+                    1L -> startActivity(
+                        Intent(
+                            this@BloodTestsActivity,
+                            MainActivity::class.java
+                        )
+                    )
+                    2L -> startActivity(
+                        Intent(
+                            this@BloodTestsActivity,
+                            BloodTestsActivity::class.java
+                        )
+                    )
+                    6L -> logout()
                 }
                 false
             }
@@ -107,7 +132,10 @@ class BloodTestsActivity : AbstractActivity() {
 
         binding.slider.addStickyFooterItem(PrimaryDrawerItem().apply {
             nameRes = R.string.logout
+            identifier = 6L
         })
+
+
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -120,6 +148,12 @@ class BloodTestsActivity : AbstractActivity() {
             com.mikepenz.materialdrawer.R.string.material_drawer_open,
             com.mikepenz.materialdrawer.R.string.material_drawer_close
         )
+    }
+
+    private fun logout() {
+        preferences.edit().putBoolean("logged", false).apply()
+        preferences.edit().remove("token").apply()
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
