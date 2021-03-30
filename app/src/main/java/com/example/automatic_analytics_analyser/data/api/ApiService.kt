@@ -18,5 +18,5 @@ interface ApiService {
     suspend fun changePassword(
         @Header("Authorization") token: String,
         @Body password: Password
-    ): Response<Boolean>
+    ): Response<Unit>
 }

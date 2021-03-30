@@ -3,6 +3,12 @@
     <string name="welcome">Hola</string>
     <string name="welcome_part2">Esto es el centro de control digital de tu salud</string>
     <string name="welcome_part2.1">¿Qué te gustaría consultar?</string>
+    <string name="main_screen">Inicio</string>
+    <string name="blood_tests_screen">Análisis</string>
+    <string name="medication_screen">Medicación</string>
+    <string name="calendar_screen">Calendario</string>
+    <string name="chat_screen">Chat</string>
+    <string name="logout">Cerrar sesión</string>
 
     <string-array name="languages">
         <item>Castellano</item>

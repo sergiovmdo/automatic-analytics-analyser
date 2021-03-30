@@ -45,7 +45,7 @@ class UserManagmentRepository @Inject constructor(val api: ApiService, val conte
     }
 
     suspend fun changePassword(password: Password): Boolean {
-        return api.changePassword(token, password).body()!!
+        return api.changePassword(token, password).isSuccessful
     }
 
 }

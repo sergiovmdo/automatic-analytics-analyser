@@ -22,6 +22,10 @@
 
     <style name="Drawer" parent="Theme.NoActionBar">
         <item name="materialDrawerStyle">@style/Widget.MaterialDrawerStyle</item>
-        <item name="materialDrawerHeaderStyle">@style/Widget.MaterialDrawerHeaderStyle</item>
+        <item name="materialDrawerHeaderStyle">@style/Widget.MaterialDrawerHeaderStyleCustom</item>
+    </style>
+
+    <style name="Widget.MaterialDrawerHeaderStyleCustom" parent="Widget.MaterialDrawerHeaderStyle">
+        <item name="materialDrawerCompactStyle">true</item>
     </style>
 </resources>
