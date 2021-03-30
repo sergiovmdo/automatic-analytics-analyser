@@ -27,18 +27,14 @@
         </activity>
         <activity
             android:name=".view.user.RegisterActivity"
-            android:label=""
             android:theme="@style/Theme.NoActionBar" />
         <activity
             android:name=".view.user.LoginActivity"
-            android:label=""
             android:theme="@style/Theme.NoActionBar" />
         <activity
-            android:name=".view.SettingsActivity"
-            android:label="" />
+            android:name=".view.SettingsActivity" />
         <activity
             android:name=".view.BloodTestsActivity"
-            android:label=""
             android:theme="@style/Drawer"/>
 
         <meta-data

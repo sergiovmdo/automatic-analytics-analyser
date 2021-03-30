@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AAA</string>
     <string name="welcome">Hola</string>
-    <string name="welcome_part2">Esto es tu centro de control digital de salud</string>
+    <string name="welcome_part2">Esto es el centro de control digital de tu salud</string>
     <string name="welcome_part2.1">¿Qué te gustaría consultar?</string>
 
     <string-array name="languages">

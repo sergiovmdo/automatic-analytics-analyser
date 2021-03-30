@@ -20,7 +20,7 @@
 
     </style>
 
-    <style name="Drawer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Drawer" parent="Theme.NoActionBar">
         <item name="materialDrawerStyle">@style/Widget.MaterialDrawerStyle</item>
         <item name="materialDrawerHeaderStyle">@style/Widget.MaterialDrawerHeaderStyle</item>
     </style>
