@@ -22,7 +22,7 @@ import com.mikepenz.materialdrawer.model.interfaces.*
 import com.mikepenz.materialdrawer.util.addStickyFooterItem
 import com.mikepenz.materialdrawer.widget.AccountHeaderView
 
-class BloodTestsActivity : AbstractActivity() {
+class BloodTestsActivity : DrawerActivity() {
     private lateinit var binding: ActivityBloodTestsBinding
     private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     private lateinit var headerView: AccountHeaderView
@@ -40,7 +40,6 @@ class BloodTestsActivity : AbstractActivity() {
             nameText = "Mike Penz"; descriptionText = "mikepenz@gmail.com"; identifier =
             100; iconRes = R.drawable.ic_profile_image
         }
-
 
         // Create the AccountHeader
         headerView = AccountHeaderView(this).apply {
@@ -73,54 +72,57 @@ class BloodTestsActivity : AbstractActivity() {
         }
 
         binding.slider.apply {
-            itemAdapter.add(
-                PrimaryDrawerItem().apply {
-                    nameRes = R.string.main_screen
-                    identifier = 1L
-                    iconRes = R.drawable.ic_logo_background
-
-                },
-                PrimaryDrawerItem().apply {
-                    nameRes = R.string.blood_tests_screen
-                    identifier = 2L
-                    iconRes = R.drawable.ic_blood_sample
-
-                },
-                PrimaryDrawerItem().apply {
-                    nameRes = R.string.medication_screen
-                    identifier = 3L
-                    iconRes = R.drawable.ic_medicine
-
-                },
-                PrimaryDrawerItem().apply {
-                    nameRes = R.string.calendar_screen
-                    identifier = 4L
-                    iconRes = R.drawable.ic_calendar
-
-                },
-                PrimaryDrawerItem().apply {
-                    nameRes = R.string.chat_screen
-                    identifier = 5L
-                    iconRes = R.drawable.ic_asistencia_medica
-
-                }
-            )
+            val array = super.getDrawerItems()
+            itemAdapter.set(array.toList())
+//            itemAdapter.add(
+//                PrimaryDrawerItem().apply {
+//                    nameRes = R.string.main_screen
+//                    identifier = 1L
+//                    iconRes = R.drawable.ic_logo_background
+//
+//                },
+//                PrimaryDrawerItem().apply {
+//                    nameRes = R.string.blood_tests_screen
+//                    identifier = 2L
+//                    iconRes = R.drawable.ic_blood_sample
+//
+//                },
+//                PrimaryDrawerItem().apply {
+//                    nameRes = R.string.medication_screen
+//                    identifier = 3L
+//                    iconRes = R.drawable.ic_medicine
+//
+//                },
+//                PrimaryDrawerItem().apply {
+//                    nameRes = R.string.calendar_screen
+//                    identifier = 4L
+//                    iconRes = R.drawable.ic_calendar
+//
+//                },
+//                PrimaryDrawerItem().apply {
+//                    nameRes = R.string.chat_screen
+//                    identifier = 5L
+//                    iconRes = R.drawable.ic_asistencia_medica
+//
+//                }
+//            )
             onDrawerItemClickListener = { _, drawerItem, _ ->
-                when (drawerItem.identifier) {
-                    1L -> startActivity(
-                        Intent(
-                            this@BloodTestsActivity,
-                            MainActivity::class.java
-                        )
-                    )
-                    2L -> startActivity(
-                        Intent(
-                            this@BloodTestsActivity,
-                            BloodTestsActivity::class.java
-                        )
-                    )
-                    6L -> logout()
-                }
+//                when (drawerItem.identifier) {
+//                    1L -> startActivity(
+//                        Intent(
+//                            this@BloodTestsActivity,
+//                            MainActivity::class.java
+//                        )
+//                    )
+//                    2L -> startActivity(
+//                        Intent(
+//                            this@BloodTestsActivity,
+//                            BloodTestsActivity::class.java
+//                        )
+//                    )
+//                    6L -> logout()
+//                }
+                super.executeDrawerAction(drawerItem.identifier)
                 false
             }
             setSavedInstance(savedInstanceState)
@@ -156,9 +158,9 @@ class BloodTestsActivity : AbstractActivity() {
         startActivity(Intent(this, LoginActivity::class.java))
     }
 
-    override fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
-        actionBarDrawerToggle.syncState()
-    }
+//    override fun onPostCreate(savedInstanceState: Bundle?) {
+//        super.onPostCreate(savedInstanceState)
+//        actionBarDrawerToggle.syncState()
+//    }
 
 }

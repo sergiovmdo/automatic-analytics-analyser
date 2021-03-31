@@ -22,7 +22,6 @@ class RegisterActivity : AbstractActivity() {
     private val TAG = "RegisterActivity"
 
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var preferences: SharedPreferences;
 
     private val viewModel: ResgisterViewModel
         get() {
@@ -37,8 +36,6 @@ class RegisterActivity : AbstractActivity() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
-        preferences = PreferenceManager.getDefaultSharedPreferences(this)
 
         viewModel.registerCompleted.observe(this, Observer {
             if (!it.isNullOrEmpty()){
