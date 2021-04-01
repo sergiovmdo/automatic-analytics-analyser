@@ -29,12 +29,13 @@ class AnalysisFragment : AbstractFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return DataBindingUtil.inflate<FragmentAnalysisBinding>(
+        binding = DataBindingUtil.inflate<FragmentAnalysisBinding>(
             inflater,
             R.layout.fragment_analysis,
             container,
-            false
-        ).root
+            false)
+        return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,6 +58,7 @@ class AnalysisFragment : AbstractFragment() {
     }
 
     private fun populateAnalysis(data: List<Analysis>) {
+        binding.refreshAnalysis.isRefreshing = false
         val items = data.map { BindingAnalysisItem(it) }
         itemAdapter.setNewList(items)
     }

@@ -11,7 +11,7 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class ActivitiesModule {
-    @ContributesAndroidInjector(modules = [FragmentsModule::class])
+    @ContributesAndroidInjector
     abstract fun contributeMainActivity() : MainActivity
 
     @ContributesAndroidInjector
@@ -26,6 +26,6 @@ abstract class ActivitiesModule {
     @ContributesAndroidInjector
     abstract fun contributeSettingsActivity() : SettingsActivity
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [FragmentsModule::class])
     abstract fun contributeDrawerActivity() : DrawerActivity
 }

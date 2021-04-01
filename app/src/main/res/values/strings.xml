@@ -9,6 +9,7 @@
     <string name="calendar_screen">Calendario</string>
     <string name="chat_screen">Chat</string>
     <string name="logout">Cerrar sesión</string>
+    <string name="calendar_item_content">%s en %s</string>
 
     <string-array name="languages">
         <item>Castellano</item>
