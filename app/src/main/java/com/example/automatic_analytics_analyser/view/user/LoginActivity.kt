@@ -34,6 +34,9 @@ class LoginActivity : AbstractActivity() {
             startActivityForResult(Intent(this, RegisterActivity::class.java), 40)
         }
 
+        preferences.edit().putBoolean("logged", false).apply()
+        preferences.edit().remove("token").apply()
+
         viewModel.loginCompleted.observe(this, Observer {
             if (!it.isNullOrEmpty()){
                 //TODO: Store token in preferences using repository

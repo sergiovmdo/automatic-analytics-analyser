@@ -19,4 +19,7 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body password: Password
     ): Response<Unit>
+
+    @GET("analysis")
+    suspend fun getAnalysis(@Header("Authorization") token: String): List<Analysis>
 }

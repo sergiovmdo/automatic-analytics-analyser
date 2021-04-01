@@ -1,3 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation" />
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/analysisFragment">
+
+    <fragment
+        android:id="@+id/analysisFragment"
+        android:name="com.example.automatic_analytics_analyser.view.fragments.AnalysisFragment"
+        android:label="FragmentOne" />
+    <fragment
+        android:id="@+id/medicationFragment"
+        android:name="com.example.automatic_analytics_analyser.view.fragments.MedicationFragment"
+        android:label="FragmentTwo" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.automatic_analytics_analyser.view.fragments.CalendarFragment"
+        android:label="FragmentThree" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.automatic_analytics_analyser.view.fragments.ChatFragment"
+        android:label="FragmentFour" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.automatic_analytics_analyser.view.MainActivity"
+        android:label="MainActivity"/>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.automatic_analytics_analyser.view.user.LoginActivity"
+        android:label="LoginActivity"/>
+
+</navigation>
