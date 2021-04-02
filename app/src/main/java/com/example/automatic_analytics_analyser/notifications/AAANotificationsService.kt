@@ -14,6 +14,7 @@ import com.example.automatic_analytics_analyser.data.repositories.UserManagmentR
 import com.example.automatic_analytics_analyser.model.FCMToken
 import com.example.automatic_analytics_analyser.model.User
 import com.example.automatic_analytics_analyser.view.MainActivity
+import com.example.automatic_analytics_analyser.view.fragments.DrawerActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import dagger.android.AndroidInjection
@@ -40,11 +41,14 @@ class AAANotificationsService : FirebaseMessagingService() {
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        sendNotification(remoteMessage.data["body"], remoteMessage.data["title"])
+        sendNotification(remoteMessage.data["body"], remoteMessage.data["title"], remoteMessage.data["category"])
     }
 
-    private fun sendNotification(messageBody: String?, title: String?) {
-        val intent = Intent(this, MainActivity::class.java)
+
+    private fun sendNotification(messageBody: String?, title: String?, category: String?) {
+        val type = NotificationType.fromString(category!!)
+        val intent = Intent(this, DrawerActivity::class.java)
+        intent.putExtra("fragmentId", type.id)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(
             this, 0 /* Request code */, intent,
@@ -54,7 +58,7 @@ class AAANotificationsService : FirebaseMessagingService() {
         val channelId = "AAAChannel"
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_logo_background)
+            .setSmallIcon(R.drawable.ic_logo)
             .setContentTitle(title)
             .setContentText(messageBody)
             .setAutoCancel(true)
