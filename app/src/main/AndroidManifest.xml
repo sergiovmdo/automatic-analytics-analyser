@@ -34,11 +34,16 @@
         <activity
             android:name=".view.SettingsActivity" />
         <activity
-            android:name=".view.BloodTestsActivity"
-            android:theme="@style/Drawer"/>
-        <activity
             android:name=".view.fragments.DrawerActivity"
             android:theme="@style/Drawer"/>
+
+        <service
+            android:name=".notifications.AAANotificationsService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <meta-data
             android:name="preloaded_fonts"

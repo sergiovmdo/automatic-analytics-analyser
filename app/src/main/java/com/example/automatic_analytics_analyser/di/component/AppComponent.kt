@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.automatic_analytics_analyser.AAAApp
 import com.example.automatic_analytics_analyser.di.module.ActivitiesModule
 import com.example.automatic_analytics_analyser.di.module.AppModule
+import com.example.automatic_analytics_analyser.di.module.ServiceModule
 import com.example.automatic_analytics_analyser.di.module.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
@@ -23,7 +24,8 @@ import javax.inject.Singleton
         AppModule::class,
         AndroidInjectionModule::class,
         ViewModelModule::class,
-        ActivitiesModule::class
+        ActivitiesModule::class,
+        ServiceModule::class
     ]
 )
 interface AppComponent : AndroidInjector<AAAApp> {

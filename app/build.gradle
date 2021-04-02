@@ -101,4 +101,11 @@ dependencies {
 
     //Material dialogs
     implementation 'com.afollestad.material-dialogs:core:3.2.1'
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:26.8.0')
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
 }
+apply plugin: 'com.google.gms.google-services'

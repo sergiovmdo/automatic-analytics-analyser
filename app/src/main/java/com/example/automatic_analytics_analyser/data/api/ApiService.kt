@@ -22,4 +22,7 @@ interface ApiService {
 
     @GET("analysis")
     suspend fun getAnalysis(@Header("Authorization") token: String): List<Analysis>
+
+    @PUT("user/fcmtoken")
+    suspend fun insertFCMToken(@Header("Authorization") token: String, @Body fcmToken: FCMToken) : Response<Unit>
 }

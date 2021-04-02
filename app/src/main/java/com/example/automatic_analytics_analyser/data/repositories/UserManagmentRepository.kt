@@ -48,4 +48,8 @@ class UserManagmentRepository @Inject constructor(val api: ApiService, val conte
         return api.changePassword(token, password).isSuccessful
     }
 
+    suspend fun insertFCMToken(fcmToken: FCMToken){
+        api.insertFCMToken(token, fcmToken)
+    }
+
 }
