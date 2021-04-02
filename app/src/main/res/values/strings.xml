@@ -10,6 +10,11 @@
     <string name="chat_screen">Chat</string>
     <string name="logout">Cerrar sesión</string>
     <string name="calendar_item_content">%s en %s</string>
+    <string name="close">Cerrar</string>
+    <string name="shareAnalysis">Los datos de la analítica son los siguientes: </string>
+    <string name="analysisDate">El análisis se realizó en fecha: </string>
+    <string name="analysisTitle">para realizar un control sobre: </string>
+    <string name="analysisData">Con los siguientes resultados: </string>
 
     <string-array name="languages">
         <item>Castellano</item>

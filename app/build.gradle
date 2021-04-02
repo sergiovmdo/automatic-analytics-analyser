@@ -98,4 +98,7 @@ dependencies {
     implementation 'com.mikepenz:fastadapter-extensions:3.3.1'
     implementation "com.mikepenz:fastadapter-extensions-binding:5.0.0" // diff util helpers
     implementation "com.mikepenz:fastadapter-extensions-diff:5.0.0" // diff util helpers
+
+    //Material dialogs
+    implementation 'com.afollestad.material-dialogs:core:3.2.1'
 }

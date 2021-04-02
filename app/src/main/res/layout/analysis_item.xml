@@ -12,7 +12,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/likeItemContainer"
+        android:id="@+id/analysisContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -47,7 +47,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{analysis.date}"
+                        android:text="@{analysis.convertDate()}"
                         tools:text="06/09/2022"
                         android:textAppearance="?attr/textAppearanceHeadline6" />
 
@@ -79,6 +79,7 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/consult_button"
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -86,6 +87,7 @@
                         android:text="Consultar" />
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/share_button"
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
