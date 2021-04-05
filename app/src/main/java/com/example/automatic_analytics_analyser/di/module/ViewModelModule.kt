@@ -7,6 +7,7 @@ import com.example.automatic_analytics_analyser.di.util.ViewModelKey
 import com.example.automatic_analytics_analyser.view.MainActivityViewModel
 import com.example.automatic_analytics_analyser.view.SettingsViewModel
 import com.example.automatic_analytics_analyser.view.fragments.AnalysisViewModel
+import com.example.automatic_analytics_analyser.view.fragments.CalendarViewModel
 import com.example.automatic_analytics_analyser.view.user.LoginViewModel
 import com.example.automatic_analytics_analyser.view.user.ResgisterViewModel
 import dagger.Binds
@@ -40,6 +41,12 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(AnalysisViewModel::class)
     abstract fun analysisViewModel(viewModel: AnalysisViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CalendarViewModel::class)
+    abstract fun calendarViewModel(viewModel: CalendarViewModel): ViewModel
+
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

@@ -101,6 +101,7 @@ dependencies {
 
     //Material dialogs
     implementation 'com.afollestad.material-dialogs:core:3.2.1'
+    implementation 'com.afollestad.material-dialogs:datetime:3.2.1'
 
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:26.8.0')

@@ -30,7 +30,6 @@ class AnalysisFragment : AbstractFragment() {
         ViewModelProviders.of(this, viewModelFactory).get(AnalysisViewModel::class.java)
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -62,6 +61,7 @@ class AnalysisFragment : AbstractFragment() {
             populateAnalysis(it)
         })
 
+        //Functionality for consult button
         fastAdapter.addEventHook(object : ClickEventHook<BindingAnalysisItem>() {
             override fun onBind(viewHolder: RecyclerView.ViewHolder): View? {
                 return viewHolder.asBinding<AnalysisItemBinding> {
@@ -84,6 +84,7 @@ class AnalysisFragment : AbstractFragment() {
             }
         })
 
+        //Functionality for share button
         fastAdapter.addEventHook(object : ClickEventHook<BindingAnalysisItem>() {
             override fun onBind(viewHolder: RecyclerView.ViewHolder): View? {
                 return viewHolder.asBinding<AnalysisItemBinding> {

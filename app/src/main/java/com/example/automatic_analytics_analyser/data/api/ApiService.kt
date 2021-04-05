@@ -25,4 +25,7 @@ interface ApiService {
 
     @PUT("user/fcmtoken")
     suspend fun insertFCMToken(@Header("Authorization") token: String, @Body fcmToken: FCMToken) : Response<Unit>
+
+    @GET("calendar")
+    suspend fun getAppointments(@Header("Authorization") token: String): List<Appointment>
 }
