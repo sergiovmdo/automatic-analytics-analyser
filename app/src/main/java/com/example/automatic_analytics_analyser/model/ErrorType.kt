@@ -2,7 +2,7 @@ package com.example.automatic_analytics_analyser.model
 
 enum class ErrorType(val errorMessage: String) {
     DNI("Este campo es obligatorio"),
-    WRONG_DNI("El Dni introducido no es correcto"),
+    WRONG_DNI("El DNI introducido no es correcto"),
     PASSWORD("Este campo es obligatorio"),
     CONFIRM_PASSWORD("Este campo es obligatorio"),
     PASSWORD_MATCH("Las contraseñas no coinciden"),

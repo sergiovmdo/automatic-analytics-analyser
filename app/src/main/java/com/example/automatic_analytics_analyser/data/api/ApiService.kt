@@ -28,4 +28,8 @@ interface ApiService {
 
     @GET("calendar")
     suspend fun getAppointments(@Header("Authorization") token: String): List<Appointment>
+
+    @GET("chat")
+    suspend fun getChats(@Header("Authorization") token: String): List<Chat>
+
 }
