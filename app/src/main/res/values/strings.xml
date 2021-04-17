@@ -26,4 +26,13 @@
         <item>Castellano</item>
         <item>Català</item>
     </string-array>
+    <string-array name="specialities">
+        <item>Mi enfermedad Crónica</item>
+        <item>Ginecología</item>
+        <item>Salud mental</item>
+        <item>Geriátrica</item>
+        <item>Pediátrica</item>
+        <item>Familiar</item>
+        <item>Cuidados Quirúrgicos</item>
+    </string-array>
 </resources>

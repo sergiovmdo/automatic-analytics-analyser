@@ -106,7 +106,7 @@ class ChatFragment : AbstractFragment() {
                 ArrayAdapter(
                     it.context,
                     android.R.layout.simple_spinner_dropdown_item,
-                    resources.getStringArray(R.array.languages)
+                    resources.getStringArray(R.array.specialities)
                 )
             )
 
