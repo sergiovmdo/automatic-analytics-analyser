@@ -161,7 +161,7 @@ open class DrawerActivity : AbstractActivity() {
         // Importante para que la navegacion sea automatica
         binding.slider.setupWithNavController(navController)
 
-        binding.slider.setSelection(intent.getLongExtra("fragmentId", 0L))
+        navController.navigate(intent.getIntExtra("fragmentId", 0))
     }
 
     override fun onResume() {

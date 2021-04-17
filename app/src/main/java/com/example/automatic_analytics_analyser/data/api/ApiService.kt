@@ -38,4 +38,7 @@ interface ApiService {
     @GET("chat/{id}")
     suspend fun getChat(@Header("Authorization") token: String , @Path("id") id: Long): Response<ChatItem>
 
+    @POST("chat/message")
+    suspend fun createMessage(@Header("Authorization") token: String, @Body message: SentMessage) : Response<Unit>
+
 }

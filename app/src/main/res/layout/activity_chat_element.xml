@@ -40,13 +40,13 @@
                 android:id="@+id/messageContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:text="@={viewModel.message.content}"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/new_chat_button"
+            android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -55,7 +55,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:backgroundTint="@color/primary"
-            app:srcCompat="@drawable/ic_baseline_send_24" />
+            app:srcCompat="@drawable/ic_baseline_send_24"
+            android:onClick="@{viewModel.createMessage}"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

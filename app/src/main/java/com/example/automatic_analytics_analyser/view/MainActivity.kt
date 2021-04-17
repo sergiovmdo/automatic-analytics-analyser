@@ -35,25 +35,25 @@ class MainActivity : AbstractActivity() {
     private fun initNavigationListeners() {
         binding.analysisButton.setOnClickListener{
             val intent: Intent = Intent(this, DrawerActivity::class.java)
-            intent.putExtra("fragmentId", 2L)
-            startActivity(intent)
-        }
-
-        binding.calendarButton.setOnClickListener{
-            val intent: Intent = Intent(this, DrawerActivity::class.java)
-            intent.putExtra("fragmentId", 3L)
-            startActivity(intent)
-        }
-
-        binding.chatButton.setOnClickListener{
-            val intent: Intent = Intent(this, DrawerActivity::class.java)
-            intent.putExtra("fragmentId", 4L)
+            intent.putExtra("fragmentId", R.id.analysisFragment)
             startActivity(intent)
         }
 
         binding.medicationButton.setOnClickListener{
             val intent: Intent = Intent(this, DrawerActivity::class.java)
-            intent.putExtra("fragmentId", 5L)
+            intent.putExtra("fragmentId", R.id.medicationFragment)
+            startActivity(intent)
+        }
+
+        binding.calendarButton.setOnClickListener{
+            val intent: Intent = Intent(this, DrawerActivity::class.java)
+            intent.putExtra("fragmentId", R.id.calendarFragment)
+            startActivity(intent)
+        }
+
+        binding.chatButton.setOnClickListener{
+            val intent: Intent = Intent(this, DrawerActivity::class.java)
+            intent.putExtra("fragmentId", R.id.chatFragment)
             startActivity(intent)
         }
 
