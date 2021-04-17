@@ -75,15 +75,13 @@ class CalendarFragment : AbstractFragment() {
                 item: BindingCalendarItem
             ) {
                 MaterialDialog(activity!!).show {
-                    MaterialDialog(activity!!).show {
-                        title(R.string.claimTitle)
-                        dateTimePicker(requireFutureDateTime = true) { _, dateTime ->
-                            //TODO: Do something with the claiming date
+                    title(R.string.claimTitle)
+                    dateTimePicker(requireFutureDateTime = true) { _, dateTime ->
+                        //TODO: Do something with the claiming date
 
-                            MaterialDialog(activity!!).show {
-                                title(R.string.claimConfirmationTitle)
-                                message(R.string.claimConfirmationBody)
-                            }
+                        MaterialDialog(activity!!).show {
+                            title(R.string.claimConfirmationTitle)
+                            message(R.string.claimConfirmationBody)
                         }
                     }
                 }

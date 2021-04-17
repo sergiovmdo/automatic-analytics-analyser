@@ -35,7 +35,9 @@
         <activity
             android:name=".view.fragments.DrawerActivity"
             android:theme="@style/Drawer"/>
-
+        <activity
+            android:name=".view.fragments.chat.ChatItemActivity"
+            android:theme="@style/Drawer"/>
         <service
             android:name=".notifications.AAANotificationsService"
             android:exported="false">

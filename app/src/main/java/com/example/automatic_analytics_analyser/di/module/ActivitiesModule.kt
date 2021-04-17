@@ -6,6 +6,7 @@ import com.example.automatic_analytics_analyser.view.MainActivity
 import com.example.automatic_analytics_analyser.view.user.RegisterActivity
 import com.example.automatic_analytics_analyser.view.SettingsActivity
 import com.example.automatic_analytics_analyser.view.fragments.DrawerActivity
+import com.example.automatic_analytics_analyser.view.fragments.chat.ChatItemActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -25,6 +26,9 @@ abstract class ActivitiesModule {
 
     @ContributesAndroidInjector
     abstract fun contributeSettingsActivity() : SettingsActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeChatItemActivity() : ChatItemActivity
 
     @ContributesAndroidInjector(modules = [FragmentsModule::class])
     abstract fun contributeDrawerActivity() : DrawerActivity

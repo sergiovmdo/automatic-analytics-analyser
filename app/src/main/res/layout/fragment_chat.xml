@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.automatic_analytics_analyser.view.fragments.ChatViewModel" />
+            type="com.example.automatic_analytics_analyser.view.fragments.chat.ChatViewModel" />
 
     </data>
 
@@ -45,7 +45,7 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout> />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_action_button"
+            android:id="@+id/new_chat_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

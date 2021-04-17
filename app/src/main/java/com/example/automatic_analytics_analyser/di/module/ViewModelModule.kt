@@ -8,7 +8,8 @@ import com.example.automatic_analytics_analyser.view.MainActivityViewModel
 import com.example.automatic_analytics_analyser.view.SettingsViewModel
 import com.example.automatic_analytics_analyser.view.fragments.AnalysisViewModel
 import com.example.automatic_analytics_analyser.view.fragments.CalendarViewModel
-import com.example.automatic_analytics_analyser.view.fragments.ChatViewModel
+import com.example.automatic_analytics_analyser.view.fragments.chat.ChatItemViewModel
+import com.example.automatic_analytics_analyser.view.fragments.chat.ChatViewModel
 import com.example.automatic_analytics_analyser.view.user.LoginViewModel
 import com.example.automatic_analytics_analyser.view.user.ResgisterViewModel
 import dagger.Binds
@@ -52,6 +53,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ChatViewModel::class)
     abstract fun chatViewModel(viewModel: ChatViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChatItemViewModel::class)
+    abstract fun chatItemViewModel(viewModel: ChatItemViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
