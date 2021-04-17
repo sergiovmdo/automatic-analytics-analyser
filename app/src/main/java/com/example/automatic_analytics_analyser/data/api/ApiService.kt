@@ -32,4 +32,10 @@ interface ApiService {
     @GET("chat")
     suspend fun getChats(@Header("Authorization") token: String): List<Chat>
 
+    @POST("chat")
+    suspend fun createChat(@Header("Authorization") token: String, @Body chatBuilder: ChatBuilder) : Response<Chat>
+
+    @GET("chat/{id}")
+    suspend fun getChat(@Header("Authorization") token: String , @Path("id") id: Long): Response<ChatItem>
+
 }

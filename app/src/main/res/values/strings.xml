@@ -19,7 +19,7 @@
     <string name="claimTitle">Escoge un día y una hora que te vaya bien</string>
     <string name="claimConfirmationTitle">Se ha enviado tu solicitud</string>
     <string name="claimConfirmationBody">Tu solicitud será revisada y tenida en cuenta, se te notificará la resolución.</string>
-    <string name="sendMessageTitle">Escoge una especialidad y envía tu mensaje</string>
+    <string name="sendMessageTitle">Escoge una especialidad y envía tu mensaje.</string>
     <string name="send">Enviar</string>
 
     <string-array name="languages">

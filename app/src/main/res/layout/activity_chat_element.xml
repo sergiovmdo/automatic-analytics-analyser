@@ -17,18 +17,22 @@
         android:layout_height="match_parent"
         android:background="#e0fffc">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/registerTitle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_semibold"
-            android:text="BUEN CHAT CRACK"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#333333"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/message_item" />
+
+        </LinearLayout>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

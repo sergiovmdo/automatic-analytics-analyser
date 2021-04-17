@@ -5,9 +5,12 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.example.automatic_analytics_analyser.data.api.ApiService
 import com.example.automatic_analytics_analyser.model.Chat
+import com.example.automatic_analytics_analyser.model.ChatBuilder
+import com.example.automatic_analytics_analyser.model.ChatItem
+import retrofit2.Response
 import javax.inject.Inject
 
-class ChatRepository @Inject constructor(val api: ApiService, val context: Context){
+class ChatRepository @Inject constructor(val api: ApiService, val context: Context) {
     private lateinit var preferences: SharedPreferences;
     var token: String
 
@@ -18,7 +21,24 @@ class ChatRepository @Inject constructor(val api: ApiService, val context: Conte
         token = preferences.getString("token", "")!!
     }
 
-    suspend fun getChats() : List<Chat>{
+    suspend fun getChats(): List<Chat> {
         return api.getChats(token)
+    }
+
+    suspend fun createChat(chat: ChatBuilder): Chat? {
+        val response: Response<Chat> = api.createChat(token, chat)
+        if (response.isSuccessful) {
+            return response.body()!!
+        } else
+            return null
+
+    }
+
+    suspend fun getChat( id : Long) : ChatItem? {
+        val response: Response<ChatItem> = api.getChat(token, id)
+        if (response.isSuccessful) {
+            return response.body()!!
+        } else
+            return null
     }
 }

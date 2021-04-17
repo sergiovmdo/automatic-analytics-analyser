@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -12,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.customview.customView
+import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.datetime.dateTimePicker
 import com.afollestad.materialdialogs.input.input
 import com.example.automatic_analytics_analyser.R
@@ -20,6 +25,7 @@ import com.example.automatic_analytics_analyser.databinding.FragmentChatBinding
 import com.example.automatic_analytics_analyser.model.Chat
 import com.example.automatic_analytics_analyser.view.MainActivity
 import com.example.automatic_analytics_analyser.view.fragments.AbstractFragment
+import com.google.android.material.textfield.TextInputEditText
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.binding.BindingViewHolder
@@ -77,22 +83,45 @@ class ChatFragment : AbstractFragment() {
                 fastAdapter: FastAdapter<BindingChatItem>,
                 item: BindingChatItem
             ) {
-                startActivity(Intent(activity!!, ChatItemActivity::class.java))
+                val intent = Intent(requireActivity(), ChatItemActivity::class.java)
+                intent.putExtra("chatId", item.chat.id)
+                startActivity(intent)
             }
         })
 
         //Open dialog when clicking the FAB button
         binding.newChatButton.setOnClickListener {
-            MaterialDialog(it.context).show {
-                title(R.string.sendMessageTitle)
-                input { dialog, text ->
-                    // Text submitted with the action button
-                    startActivity(Intent(it.context, ChatItemActivity::class.java))
-                }
-                positiveButton(R.string.send)
-                negativeButton(R.string.close)
-            }
+            var messageInput: TextInputEditText? = null
+            var dropdown: AutoCompleteTextView? = null
+            val dialog = MaterialDialog(it.context).title(R.string.sendMessageTitle)
+                .customView(R.layout.new_chat_dialog).positiveButton(R.string.send) {
+                val messageContent = messageInput?.text?.toString()
+                val speciality = dropdown?.text?.toString()
+                viewModel.createMessage(messageContent, speciality)
+            }.negativeButton(R.string.close)
+
+            val customView = dialog.getCustomView()
+            dropdown = customView.findViewById<AutoCompleteTextView>(R.id.specialitiesDropdown)
+            dropdown.setAdapter(
+                ArrayAdapter(
+                    it.context,
+                    android.R.layout.simple_spinner_dropdown_item,
+                    resources.getStringArray(R.array.languages)
+                )
+            )
+
+            messageInput = customView.findViewById<TextInputEditText>(R.id.messageContent)
+
+            dialog.show()
         }
+
+        viewModel.createdChat.observe(viewLifecycleOwner, Observer {
+            it?.let { chat ->
+                val intent = Intent(requireActivity(), ChatItemActivity::class.java)
+                intent.putExtra("chatId", chat.id)
+                startActivity(intent)
+            }
+        })
 
         viewModel.refreshChats()
     }
