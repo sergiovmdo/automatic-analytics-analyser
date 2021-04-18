@@ -76,7 +76,7 @@ class AnalysisFragment : AbstractFragment() {
                 item: BindingAnalysisItem
             ) {
                 MaterialDialog(activity!!).show {
-                    title(text = "Your Title")
+                    title(R.string.analysisDialogTitle)
                     var message: String = parseAnalysisContentToText(item.analysis.analysisData)
                     message(text = message)
                     positiveButton(R.string.close)

@@ -4,11 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import com.example.automatic_analytics_analyser.R
 import com.example.automatic_analytics_analyser.databinding.ActivityDrawerBinding
 import com.example.automatic_analytics_analyser.view.AbstractActivity
 import com.example.automatic_analytics_analyser.view.SettingsActivity
+import com.example.automatic_analytics_analyser.view.fragments.chat.DrawerActivityViewModel
 import com.example.automatic_analytics_analyser.view.user.LoginActivity
 import com.mikepenz.materialdrawer.model.NavigationDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
@@ -27,15 +30,31 @@ open class DrawerActivity : AbstractActivity() {
     private lateinit var headerView: AccountHeaderView
     private lateinit var binding: ActivityDrawerBinding
 
+    private val viewModel: DrawerActivityViewModel by lazy {
+        ViewModelProviders.of(this, viewModelFactory).get(DrawerActivityViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_drawer)
 
         val profile = ProfileDrawerItem().apply {
-            nameText = "Mike Penz"; descriptionText = "mikepenz@gmail.com"; identifier =
-            100; iconRes = R.drawable.ic_profile_image
+            nameText = viewModel.userProfile.value?.name ?: ""; descriptionText =
+            viewModel.userProfile.value?.mail ?: ""; identifier = 100;
+            iconRes = R.drawable.ic_profile_image
         }
+
+        viewModel.userProfile.observe(this, Observer {
+            it?.let {user ->
+                profile.apply {
+                    nameText = user.name
+                    descriptionText = user.mail
+                }
+
+                headerView.updateProfile(profile)
+            }
+        })
 
         // Create the AccountHeader
         headerView = AccountHeaderView(this).apply {
