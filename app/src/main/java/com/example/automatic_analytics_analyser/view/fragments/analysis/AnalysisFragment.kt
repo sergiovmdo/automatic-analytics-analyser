@@ -1,4 +1,4 @@
-package com.example.automatic_analytics_analyser.view.fragments
+package com.example.automatic_analytics_analyser.view.fragments.analysis
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,6 +16,7 @@ import com.example.automatic_analytics_analyser.R
 import com.example.automatic_analytics_analyser.databinding.AnalysisItemBinding
 import com.example.automatic_analytics_analyser.databinding.FragmentAnalysisBinding
 import com.example.automatic_analytics_analyser.model.Analysis
+import com.example.automatic_analytics_analyser.view.fragments.AbstractFragment
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.binding.BindingViewHolder
@@ -108,7 +109,11 @@ class AnalysisFragment : AbstractFragment() {
 
     private fun populateAnalysis(data: List<Analysis>) {
         binding.refreshAnalysis.isRefreshing = false
-        val items = data.map { BindingAnalysisItem(it) }
+        val items = data.map {
+            BindingAnalysisItem(
+                it
+            )
+        }
         itemAdapter.setNewList(items)
     }
 

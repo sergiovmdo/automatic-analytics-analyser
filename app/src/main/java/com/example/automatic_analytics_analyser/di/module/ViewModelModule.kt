@@ -6,11 +6,12 @@ import com.example.automatic_analytics_analyser.di.util.ViewModelFactory
 import com.example.automatic_analytics_analyser.di.util.ViewModelKey
 import com.example.automatic_analytics_analyser.view.MainActivityViewModel
 import com.example.automatic_analytics_analyser.view.SettingsViewModel
-import com.example.automatic_analytics_analyser.view.fragments.AnalysisViewModel
-import com.example.automatic_analytics_analyser.view.fragments.CalendarViewModel
+import com.example.automatic_analytics_analyser.view.fragments.analysis.AnalysisViewModel
+import com.example.automatic_analytics_analyser.view.fragments.calendar.CalendarViewModel
+import com.example.automatic_analytics_analyser.view.fragments.medication.MedicationViewModel
 import com.example.automatic_analytics_analyser.view.fragments.chat.ChatItemViewModel
 import com.example.automatic_analytics_analyser.view.fragments.chat.ChatViewModel
-import com.example.automatic_analytics_analyser.view.fragments.chat.DrawerActivityViewModel
+import com.example.automatic_analytics_analyser.view.fragments.DrawerActivityViewModel
 import com.example.automatic_analytics_analyser.view.user.LoginViewModel
 import com.example.automatic_analytics_analyser.view.user.ResgisterViewModel
 import dagger.Binds
@@ -64,6 +65,12 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DrawerActivityViewModel::class)
     abstract fun drawerViewModel(viewModel: DrawerActivityViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MedicationViewModel::class)
+    abstract fun medicationViewModel(viewModel: MedicationViewModel): ViewModel
+
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

@@ -11,7 +11,6 @@ import com.example.automatic_analytics_analyser.R
 import com.example.automatic_analytics_analyser.databinding.ActivityDrawerBinding
 import com.example.automatic_analytics_analyser.view.AbstractActivity
 import com.example.automatic_analytics_analyser.view.SettingsActivity
-import com.example.automatic_analytics_analyser.view.fragments.chat.DrawerActivityViewModel
 import com.example.automatic_analytics_analyser.view.user.LoginActivity
 import com.mikepenz.materialdrawer.model.NavigationDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem

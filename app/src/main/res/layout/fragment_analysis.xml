@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.automatic_analytics_analyser.view.fragments.AnalysisViewModel" />
+            type="com.example.automatic_analytics_analyser.view.fragments.analysis.AnalysisViewModel" />
 
     </data>
 

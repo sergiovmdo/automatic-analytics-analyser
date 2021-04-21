@@ -1,4 +1,4 @@
-package com.example.automatic_analytics_analyser.view.fragments
+package com.example.automatic_analytics_analyser.view.fragments.calendar
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,10 +13,10 @@ import androidx.viewbinding.ViewBinding
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.datetime.dateTimePicker
 import com.example.automatic_analytics_analyser.R
-import com.example.automatic_analytics_analyser.databinding.AnalysisItemBinding
 import com.example.automatic_analytics_analyser.databinding.CalendarItemBinding
 import com.example.automatic_analytics_analyser.databinding.FragmentCalendarBinding
 import com.example.automatic_analytics_analyser.model.Appointment
+import com.example.automatic_analytics_analyser.view.fragments.AbstractFragment
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.binding.BindingViewHolder
@@ -93,7 +93,9 @@ class CalendarFragment : AbstractFragment() {
 
     private fun populateCalendar(data: List<Appointment>) {
         binding.refreshCalendar.isRefreshing = false
-        val items = data.map { BindingCalendarItem(it) }
+        val items = data.map {
+            BindingCalendarItem(it)
+        }
         itemAdapter.setNewList(items)
     }
 

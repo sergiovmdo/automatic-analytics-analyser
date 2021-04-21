@@ -1,4 +1,4 @@
-package com.example.automatic_analytics_analyser.view.fragments
+package com.example.automatic_analytics_analyser.view.fragments.analysis
 
 import androidx.lifecycle.*
 import com.example.automatic_analytics_analyser.data.Resource

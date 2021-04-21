@@ -1,4 +1,4 @@
-package com.example.automatic_analytics_analyser.view.fragments
+package com.example.automatic_analytics_analyser.view.fragments.calendar
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

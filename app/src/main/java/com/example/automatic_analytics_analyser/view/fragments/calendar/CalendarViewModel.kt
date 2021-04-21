@@ -1,4 +1,4 @@
-package com.example.automatic_analytics_analyser.view.fragments
+package com.example.automatic_analytics_analyser.view.fragments.calendar
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

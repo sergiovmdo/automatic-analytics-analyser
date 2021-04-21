@@ -41,4 +41,7 @@ interface ApiService {
     @POST("chat/message")
     suspend fun createMessage(@Header("Authorization") token: String, @Body message: SentMessage) : Response<Unit>
 
+    @GET("medication")
+    suspend fun getMedication(@Header("Authorization") token: String): Response<List<Medication>>
+
 }

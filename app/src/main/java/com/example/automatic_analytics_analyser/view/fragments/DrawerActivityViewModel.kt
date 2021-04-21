@@ -1,4 +1,4 @@
-package com.example.automatic_analytics_analyser.view.fragments.chat
+package com.example.automatic_analytics_analyser.view.fragments
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

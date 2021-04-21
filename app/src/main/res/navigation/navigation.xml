@@ -5,15 +5,15 @@
 
     <fragment
         android:id="@+id/analysisFragment"
-        android:name="com.example.automatic_analytics_analyser.view.fragments.AnalysisFragment"
+        android:name="com.example.automatic_analytics_analyser.view.fragments.analysis.AnalysisFragment"
         android:label="FragmentOne" />
     <fragment
         android:id="@+id/medicationFragment"
-        android:name="com.example.automatic_analytics_analyser.view.fragments.MedicationFragment"
+        android:name="com.example.automatic_analytics_analyser.view.fragments.medication.MedicationFragment"
         android:label="FragmentTwo" />
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.example.automatic_analytics_analyser.view.fragments.CalendarFragment"
+        android:name="com.example.automatic_analytics_analyser.view.fragments.calendar.CalendarFragment"
         android:label="FragmentThree" />
     <fragment
         android:id="@+id/chatFragment"
