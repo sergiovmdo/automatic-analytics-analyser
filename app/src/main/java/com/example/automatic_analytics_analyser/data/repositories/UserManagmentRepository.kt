@@ -52,4 +52,8 @@ class UserManagmentRepository @Inject constructor(val api: ApiService, val conte
         api.insertFCMToken(token, fcmToken)
     }
 
+    suspend fun changeLanguage(language: String) : Boolean {
+        return api.changeLanguage(token, Language(language)).isSuccessful
+    }
+
 }

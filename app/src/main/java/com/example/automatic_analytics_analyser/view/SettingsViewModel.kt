@@ -10,6 +10,7 @@ import javax.inject.Inject
 class SettingsViewModel @Inject constructor(val repository: UserManagmentRepository) : ViewModel() {
     val user = MutableLiveData<User>()
     val changePassword = MutableLiveData<Password>()
+    val changeLanguage = MutableLiveData<String>()
 
     private val _changePasswordError = MutableLiveData<ErrorType>()
     val changePasswordError: LiveData<ErrorType>
@@ -30,6 +31,18 @@ class SettingsViewModel @Inject constructor(val repository: UserManagmentReposit
                 password = "",
                 confirmPassword = ""
             )
+    }
+
+    fun changeLanguage(language: String) {
+        viewModelScope.launch {
+            //TODO: A toast must be shown when language is changed informing the user
+            repository.changeLanguage(language)
+            changeLanguage.postValue(language)
+        }
+    }
+
+    fun getUserLanguage(): String{
+        return user.value?.language!!
     }
 
     fun changePasswordAction(v: View) {

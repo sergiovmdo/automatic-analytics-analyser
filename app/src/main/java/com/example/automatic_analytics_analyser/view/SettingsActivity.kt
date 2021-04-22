@@ -1,8 +1,12 @@
 package com.example.automatic_analytics_analyser.view
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.automatic_analytics_analyser.R
 import com.example.automatic_analytics_analyser.databinding.ActivityLoginBinding
@@ -27,6 +31,12 @@ class SettingsActivity : AbstractActivity() {
         binding.lifecycleOwner = this
 
         val spinner = binding.languagesDropdown
+
+        spinner.onItemClickListener =
+            AdapterView.OnItemClickListener { _, _, _, _ ->
+                viewModel.changeLanguage(spinner.text.toString())
+            }
+
         spinner.setAdapter(
             ArrayAdapter(
                 this,
@@ -34,5 +44,16 @@ class SettingsActivity : AbstractActivity() {
                 resources.getStringArray(R.array.languages)
             )
         )
+
+        viewModel.user.observe(this, Observer {
+            spinner.setText(viewModel.getUserLanguage(), false)
+        })
+
+
+        viewModel.changeLanguage.observe(this, Observer {
+            if (!it.isNullOrEmpty()){
+                Toast.makeText(this, getString(R.string.changeLanguageMessage), Toast.LENGTH_LONG).show()
+            }
+        })
     }
 }

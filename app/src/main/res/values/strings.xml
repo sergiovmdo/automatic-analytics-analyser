@@ -22,6 +22,12 @@
     <string name="sendMessageTitle">Escoge una especialidad y envía tu mensaje.</string>
     <string name="send">Enviar</string>
     <string name="analysisDialogTitle">Resultados</string>
+    <string name="changeLanguageMessage">Se ha cambiado el idioma de la aplicación</string>
+
+
+    <string name="hypothyroidism">Hipotiroidismo</string>
+
+
 
     <string-array name="languages">
         <item>Castellano</item>

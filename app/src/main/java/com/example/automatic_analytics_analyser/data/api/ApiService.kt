@@ -44,4 +44,10 @@ interface ApiService {
     @GET("medication")
     suspend fun getMedication(@Header("Authorization") token: String): Response<List<Medication>>
 
+    @PUT("user/language")
+    suspend fun changeLanguage(
+        @Header("Authorization") token: String,
+        @Body language: Language
+    ): Response<Unit>
+
 }
