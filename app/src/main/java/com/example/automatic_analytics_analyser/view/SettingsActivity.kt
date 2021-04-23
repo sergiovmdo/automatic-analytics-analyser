@@ -1,7 +1,7 @@
 package com.example.automatic_analytics_analyser.view
 
 import android.os.Bundle
-import android.view.View
+import android.view.MenuItem
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -9,11 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.automatic_analytics_analyser.R
-import com.example.automatic_analytics_analyser.databinding.ActivityLoginBinding
 import com.example.automatic_analytics_analyser.databinding.ActivitySettingsBinding
-import com.example.automatic_analytics_analyser.view.AbstractActivity
-import com.example.automatic_analytics_analyser.view.user.LoginViewModel
-import javax.inject.Inject
+
 
 class SettingsActivity : AbstractActivity() {
 
@@ -49,11 +46,24 @@ class SettingsActivity : AbstractActivity() {
             spinner.setText(viewModel.getUserLanguage(), false)
         })
 
-
         viewModel.changeLanguage.observe(this, Observer {
             if (!it.isNullOrEmpty()){
                 Toast.makeText(this, getString(R.string.changeLanguageMessage), Toast.LENGTH_LONG).show()
             }
         })
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setTitle(R.string.shareAnalysis)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+        return true
     }
 }

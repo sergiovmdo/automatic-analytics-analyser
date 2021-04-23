@@ -3,6 +3,7 @@ package com.example.automatic_analytics_analyser.view.user
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -45,5 +46,10 @@ class LoginActivity : AbstractActivity() {
             }
         })
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
     }
 }

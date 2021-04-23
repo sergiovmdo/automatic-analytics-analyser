@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.automatic_analytics_analyser.R
 import com.example.automatic_analytics_analyser.databinding.ActivityDrawerBinding
@@ -108,6 +109,7 @@ open class DrawerActivity : AbstractActivity() {
                         nameRes = R.string.blood_tests_screen
                         identifier = 2L
                         iconRes = R.drawable.ic_blood_sample
+                        title = getString(R.string.blood_tests_screen)
                     },
                     null,
                     null
@@ -118,6 +120,7 @@ open class DrawerActivity : AbstractActivity() {
                         nameRes = R.string.medication_screen
                         identifier = 3L
                         iconRes = R.drawable.ic_medicine
+                        title = getString(R.string.medication_screen)
                     },
                     null,
                     null
@@ -128,6 +131,7 @@ open class DrawerActivity : AbstractActivity() {
                         nameRes = R.string.calendar_screen
                         identifier = 4L
                         iconRes = R.drawable.ic_calendar
+                        title = getString(R.string.calendar_screen)
                     },
                     null,
                     null
@@ -138,12 +142,21 @@ open class DrawerActivity : AbstractActivity() {
                         nameRes = R.string.chat_screen
                         identifier = 5L
                         iconRes = R.drawable.ic_asistencia_medica
+                        title = getString(R.string.chat_screen)
                     },
                     null,
                     null
                 )
             )
         }
+
+//        NavController.OnDestinationChangedListener { controller, destination, arguments ->
+//            title = when (destination.id) {
+//                R.id.chatFragment -> "Chat"
+//                else -> "Default title"
+//            }
+//
+//        }
 
         binding.lifecycleOwner = this
 
