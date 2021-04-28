@@ -14,6 +14,7 @@
     <string name="close">Cerrar</string>
     <string name="shareAnalysis">Los datos de la analítica son los siguientes: </string>
     <string name="analysisDate">El análisis se realizó en fecha: </string>
+
     <string name="analysisTitle">para realizar un control sobre: </string>
     <string name="analysisData">Con los siguientes resultados: </string>
     <string name="claimTitle">Escoge un día y una hora que te vaya bien</string>
@@ -23,6 +24,14 @@
     <string name="send">Enviar</string>
     <string name="analysisDialogTitle">Resultados</string>
     <string name="changeLanguageMessage">Se ha cambiado el idioma de la aplicación</string>
+
+    <string name="medicationDisease">Mi medicación para controlar mi </string>
+    <string name="appointmentDisease">Tengo cita para controlar mi </string>
+    <string name="es">es: \n</string>
+    <string name="day">el día: \n</string>
+    <string name="hour">a la hora: \n</string>
+    <string name="in">en: \n</string>
+
 
 
     <string name="hypothyroidism">Hipotiroidismo</string>

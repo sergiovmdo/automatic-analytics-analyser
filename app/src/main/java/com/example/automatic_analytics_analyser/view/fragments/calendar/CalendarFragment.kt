@@ -1,5 +1,6 @@
 package com.example.automatic_analytics_analyser.view.fragments.calendar
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,11 @@ import com.afollestad.materialdialogs.datetime.dateTimePicker
 import com.example.automatic_analytics_analyser.R
 import com.example.automatic_analytics_analyser.databinding.CalendarItemBinding
 import com.example.automatic_analytics_analyser.databinding.FragmentCalendarBinding
+import com.example.automatic_analytics_analyser.databinding.MedicationItemBinding
 import com.example.automatic_analytics_analyser.model.Appointment
+import com.example.automatic_analytics_analyser.model.Medication
 import com.example.automatic_analytics_analyser.view.fragments.AbstractFragment
+import com.example.automatic_analytics_analyser.view.fragments.medication.BindingMedicationItem
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.binding.BindingViewHolder
@@ -88,6 +92,25 @@ class CalendarFragment : AbstractFragment() {
             }
         })
 
+        //Functionality for share button
+        fastAdapter.addEventHook(object : ClickEventHook<BindingCalendarItem>() {
+            override fun onBind(viewHolder: RecyclerView.ViewHolder): View? {
+                return viewHolder.asBinding<CalendarItemBinding> {
+                    it.shareButton
+                }
+            }
+
+            override fun onClick(
+                v: View,
+                position: Int,
+                fastAdapter: FastAdapter<BindingCalendarItem>,
+                item: BindingCalendarItem
+            ) {
+                shareAppointment(item.appointment)
+            }
+
+        })
+
         viewModel.refreshCalendar()
     }
 
@@ -96,14 +119,21 @@ class CalendarFragment : AbstractFragment() {
         val items = data.map {
             BindingCalendarItem(it)
         }
+        if (items.isNotEmpty()) {
+            binding.noDataText.visibility = View.GONE
+        }
         itemAdapter.setNewList(items)
     }
 
-    inline fun <reified T : ViewBinding> RecyclerView.ViewHolder.asBinding(block: (T) -> View): View? {
-        return if (this is BindingViewHolder<*> && this.binding is T) {
-            block(this.binding as T)
-        } else {
-            null
-        }
+    private fun shareAppointment(appointment: Appointment) {
+        val shareText =
+            "${resources.getString(R.string.appointmentDisease)} ${appointment.disease} " +
+                    "${resources.getString(R.string.day)} ${appointment.convertDate()} " +
+                    "${resources.getString(R.string.day)} ${appointment.convertTime()} " +
+                    "${resources.getString(R.string.`in`)} ${appointment.location} "
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, shareText)
+        startActivity(shareIntent)
     }
+
 }

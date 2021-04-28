@@ -75,6 +75,14 @@
                     android:layout_height="wrap_content"
                     android:text="Reclamar"
                     android:textColor="@color/secondary" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/share_button"
+                    style="?attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Compartir"
+                    android:textColor="@color/secondary"/>
             </LinearLayout>
 
         </LinearLayout>

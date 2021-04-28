@@ -133,14 +133,10 @@ class ChatFragment : AbstractFragment() {
                 it
             )
         }
+        if (items.isNotEmpty()){
+            binding.noDataText.visibility = View.GONE
+        }
         itemAdapter.setNewList(items)
     }
 
-    inline fun <reified T : ViewBinding> RecyclerView.ViewHolder.asBinding(block: (T) -> View): View? {
-        return if (this is BindingViewHolder<*> && this.binding is T) {
-            block(this.binding as T)
-        } else {
-            null
-        }
-    }
 }
