@@ -7,7 +7,9 @@ import com.example.automatic_analytics_analyser.data.api.ApiService
 import com.example.automatic_analytics_analyser.model.Medication
 import retrofit2.Response
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class MedicationRepository @Inject constructor(val api: ApiService, val context: Context) {
     private lateinit var preferences: SharedPreferences;
     var token: String

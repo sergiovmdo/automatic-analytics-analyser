@@ -41,8 +41,15 @@ class ChatItemActivity : AbstractActivity() {
             populateChat(it)
         })
 
-        viewModel.getChat(intent.getLongExtra("chatId", 0))
+        val id = intent.getLongExtra("chatId", 0)
+        viewModel.getChat(id)
+        viewModel.onChatOpen(id)
 
+    }
+
+    override fun onDestroy() {
+        viewModel.onChatClose()
+        super.onDestroy()
     }
 
     private fun populateChat(data: ChatItem) {

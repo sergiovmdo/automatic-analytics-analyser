@@ -7,10 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.automatic_analytics_analyser.data.repositories.ChatRepository
 import com.example.automatic_analytics_analyser.data.repositories.UserManagmentRepository
-import com.example.automatic_analytics_analyser.model.ChatItem
-import com.example.automatic_analytics_analyser.model.Message
-import com.example.automatic_analytics_analyser.model.SentMessage
-import com.example.automatic_analytics_analyser.model.SimplifiedUser
+import com.example.automatic_analytics_analyser.model.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -40,6 +37,16 @@ class ChatItemViewModel @Inject constructor(val repository: ChatRepository) : Vi
         viewModelScope.launch {
             repository.createMessage(SentMessage(_chat.value!!.id, message.value!!.content))
         }
+    }
+
+    fun onChatOpen(id: Long) {
+        repository.openChat(id) { _ ->
+            getChat(id)
+        }
+    }
+
+    fun onChatClose() {
+        repository.clearOpenChat()
     }
 }
 

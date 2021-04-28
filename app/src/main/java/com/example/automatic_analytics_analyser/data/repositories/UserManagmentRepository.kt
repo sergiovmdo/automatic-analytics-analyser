@@ -5,10 +5,12 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.example.automatic_analytics_analyser.data.api.ApiService
 import com.example.automatic_analytics_analyser.model.*
-import com.example.automatic_analytics_analyser.view.MainActivity
-import retrofit2.Call
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
+import java.util.concurrent.CountDownLatch
 import javax.inject.Inject
 import javax.inject.Singleton
+
 
 @Singleton
 class UserManagmentRepository @Inject constructor(val api: ApiService, val context: Context) {
@@ -28,6 +30,7 @@ class UserManagmentRepository @Inject constructor(val api: ApiService, val conte
         token = response.token
         preferences.edit().putString("token", response.token).apply()
         preferences.edit().putBoolean("logged", true).apply()
+
         return response.token
     }
 
@@ -48,11 +51,11 @@ class UserManagmentRepository @Inject constructor(val api: ApiService, val conte
         return api.changePassword(token, password).isSuccessful
     }
 
-    suspend fun insertFCMToken(fcmToken: FCMToken){
+    suspend fun insertFCMToken(fcmToken: FCMToken) {
         api.insertFCMToken(token, fcmToken)
     }
 
-    suspend fun changeLanguage(language: String) : Boolean {
+    suspend fun changeLanguage(language: String): Boolean {
         return api.changeLanguage(token, Language(language)).isSuccessful
     }
 

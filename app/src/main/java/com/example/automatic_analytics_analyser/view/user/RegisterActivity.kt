@@ -1,22 +1,23 @@
 package com.example.automatic_analytics_analyser.view.user
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.automatic_analytics_analyser.R
 import com.example.automatic_analytics_analyser.databinding.ActivityRegisterBinding
 import com.example.automatic_analytics_analyser.model.ErrorType
+import com.example.automatic_analytics_analyser.model.FCMToken
 import com.example.automatic_analytics_analyser.view.AbstractActivity
 import com.example.automatic_analytics_analyser.view.MainActivity
-import dagger.android.support.DaggerAppCompatActivity
-import javax.inject.Inject
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.iid.InstanceIdResult
+import com.google.firebase.messaging.FirebaseMessaging
 
 class RegisterActivity : AbstractActivity() {
     private val TAG = "RegisterActivity"
@@ -38,7 +39,7 @@ class RegisterActivity : AbstractActivity() {
         binding.lifecycleOwner = this
 
         viewModel.registerCompleted.observe(this, Observer {
-            if (!it.isNullOrEmpty()){
+            if (!it.isNullOrEmpty()) {
                 Log.v(TAG, "Navigating to main screen after registering")
                 startActivity(Intent(this, MainActivity::class.java))
             }
@@ -77,5 +78,36 @@ class RegisterActivity : AbstractActivity() {
             }
         })
 
+        binding.registerButton.setOnClickListener {
+//            FirebaseMessaging.getInstance().deleteToken()
+//
+//            FirebaseMessaging.getInstance().getToken().addOnCompleteListener {
+//                val token = it.result.toString()
+//                viewModel.register(FCMToken(token))
+//            }
+//            FirebaseInstanceId.getInstance().instanceId
+//                .addOnCompleteListener { task: Task<InstanceIdResult> ->
+//                    if (task.isSuccessful) {
+//                        val token = task.result!!.token
+//                        //GOT the token!
+//                    }
+//                }
+
+            FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+                task
+                if (!task.isSuccessful) {
+                    Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new FCM registration token
+                val token = task.result
+                viewModel.register(FCMToken(token!!))
+
+                // Log and toast
+            })
+
+
+        }
     }
 }

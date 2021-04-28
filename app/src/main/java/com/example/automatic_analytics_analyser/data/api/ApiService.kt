@@ -24,7 +24,10 @@ interface ApiService {
     suspend fun getAnalysis(@Header("Authorization") token: String): List<Analysis>
 
     @PUT("user/fcmtoken")
-    suspend fun insertFCMToken(@Header("Authorization") token: String, @Body fcmToken: FCMToken) : Response<Unit>
+    suspend fun insertFCMToken(
+        @Header("Authorization") token: String,
+        @Body fcmToken: FCMToken
+    ): Response<Unit>
 
     @GET("calendar")
     suspend fun getAppointments(@Header("Authorization") token: String): List<Appointment>
@@ -33,13 +36,22 @@ interface ApiService {
     suspend fun getChats(@Header("Authorization") token: String): List<Chat>
 
     @POST("chat")
-    suspend fun createChat(@Header("Authorization") token: String, @Body chatBuilder: ChatBuilder) : Response<Chat>
+    suspend fun createChat(
+        @Header("Authorization") token: String,
+        @Body chatBuilder: ChatBuilder
+    ): Response<Chat>
 
     @GET("chat/{id}")
-    suspend fun getChat(@Header("Authorization") token: String , @Path("id") id: Long): Response<ChatItem>
+    suspend fun getChat(
+        @Header("Authorization") token: String,
+        @Path("id") id: Long
+    ): Response<ChatItem>
 
     @POST("chat/message")
-    suspend fun createMessage(@Header("Authorization") token: String, @Body message: SentMessage) : Response<Unit>
+    suspend fun createMessage(
+        @Header("Authorization") token: String,
+        @Body message: SentMessage
+    ): Response<Unit>
 
     @GET("medication")
     suspend fun getMedication(@Header("Authorization") token: String): Response<List<Medication>>

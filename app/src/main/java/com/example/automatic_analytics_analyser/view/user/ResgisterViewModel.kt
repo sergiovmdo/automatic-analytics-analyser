@@ -10,6 +10,7 @@ import java.lang.Exception
 import androidx.lifecycle.viewModelScope
 import com.example.automatic_analytics_analyser.data.repositories.UserManagmentRepository
 import com.example.automatic_analytics_analyser.model.ErrorType
+import com.example.automatic_analytics_analyser.model.FCMToken
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -46,7 +47,7 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
             )
     }
 
-    fun register(view: View) {
+    fun register(fcmToken: FCMToken) {
         val user = userProfile.value!!
         var showError = false
         var errorType = ""
@@ -118,6 +119,7 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
             //Save the user into DB and go back to login activity
             viewModelScope.launch {
                 val token = repository.createUser(user)
+                repository.insertFCMToken(fcmToken)
                 if (token.isNullOrEmpty()) {
                     _registerError.value =
                         ErrorType.API_PROBLEM

@@ -6,11 +6,16 @@ import android.preference.PreferenceManager
 import com.example.automatic_analytics_analyser.data.api.ApiService
 import com.example.automatic_analytics_analyser.model.*
 import retrofit2.Response
+import java.util.function.Consumer
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ChatRepository @Inject constructor(val api: ApiService, val context: Context) {
     private lateinit var preferences: SharedPreferences;
     var token: String
+    var openChat: Long? = null
+    var openChatCallback: ((NewMessage) -> Unit)? = null
 
     init {
         preferences =
@@ -43,4 +48,24 @@ class ChatRepository @Inject constructor(val api: ApiService, val context: Conte
     suspend fun createMessage(message: SentMessage) {
         api.createMessage(token, message)
     }
+
+    fun openChat(id: Long?, consumer: ((NewMessage) -> Unit)?) {
+        openChat = id
+        openChatCallback = consumer
+    }
+
+    fun clearOpenChat() {
+        openChat(null, null)
+    }
+
+    fun handleMessage(message: NewMessage): Boolean {
+        if (openChat != null && openChat!!.equals(message.chatId.toLong())) {
+            openChatCallback?.let {
+                it(message)
+            }
+            return true
+        }
+        return false
+    }
+
 }

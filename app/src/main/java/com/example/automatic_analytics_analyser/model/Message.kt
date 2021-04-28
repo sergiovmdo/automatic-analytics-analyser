@@ -5,5 +5,4 @@ data class Message(
     val content: String,
     val createdDate: Long,
     val user: SimplifiedUser
-
 )

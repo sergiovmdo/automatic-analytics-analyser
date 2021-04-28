@@ -142,7 +142,7 @@ open class DrawerActivity : AbstractActivity() {
                         nameRes = R.string.chat_screen
                         identifier = 5L
                         iconRes = R.drawable.ic_asistencia_medica
-                        title = getString(R.string.chat_screen)
+                        title = getString(R.string.calendar_screen)
                     },
                     null,
                     null

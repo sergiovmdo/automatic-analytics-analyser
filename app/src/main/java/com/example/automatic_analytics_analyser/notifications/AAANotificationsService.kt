@@ -9,9 +9,11 @@ import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.example.automatic_analytics_analyser.R
+import com.example.automatic_analytics_analyser.data.repositories.ChatRepository
 import com.example.automatic_analytics_analyser.data.repositories.RepositoryProvider
 import com.example.automatic_analytics_analyser.data.repositories.UserManagmentRepository
 import com.example.automatic_analytics_analyser.model.FCMToken
+import com.example.automatic_analytics_analyser.model.NewMessage
 import com.example.automatic_analytics_analyser.model.User
 import com.example.automatic_analytics_analyser.view.MainActivity
 import com.example.automatic_analytics_analyser.view.fragments.DrawerActivity
@@ -28,6 +30,9 @@ class AAANotificationsService : FirebaseMessagingService() {
     @Inject
     lateinit var userManagmentRepository: UserManagmentRepository
 
+    @Inject
+    lateinit var chatRepository: ChatRepository
+
     override fun onCreate() {
         AndroidInjection.inject(this)
         super.onCreate()
@@ -41,9 +46,20 @@ class AAANotificationsService : FirebaseMessagingService() {
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        sendNotification(remoteMessage.data["body"], remoteMessage.data["title"], remoteMessage.data["category"])
-    }
+        if (remoteMessage.data["category"].equals(NotificationType.CHAT.name)){
+            var message = NewMessage(remoteMessage.data["content"]!!, remoteMessage.data["user"]!!, remoteMessage.data["chatId"]!!)
+            if(!chatRepository.handleMessage(message)){
+                sendNotification(message.content, message.user, NotificationType.CHAT.name)
+            }
 
+        } else {
+            sendNotification(
+                remoteMessage.data["body"],
+                remoteMessage.data["title"],
+                remoteMessage.data["category"]
+            )
+        }
+    }
 
     private fun sendNotification(messageBody: String?, title: String?, category: String?) {
         val type = NotificationType.fromString(category!!)
