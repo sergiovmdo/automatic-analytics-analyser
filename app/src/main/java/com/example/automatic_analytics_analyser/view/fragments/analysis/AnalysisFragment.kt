@@ -17,6 +17,7 @@ import com.example.automatic_analytics_analyser.databinding.AnalysisItemBinding
 import com.example.automatic_analytics_analyser.databinding.FragmentAnalysisBinding
 import com.example.automatic_analytics_analyser.model.Analysis
 import com.example.automatic_analytics_analyser.view.fragments.AbstractFragment
+import com.example.automatic_analytics_analyser.view.fragments.DrawerActivity
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.binding.BindingViewHolder
@@ -104,6 +105,7 @@ class AnalysisFragment : AbstractFragment() {
 
         })
 
+        (requireActivity() as DrawerActivity).supportActionBar!!.setTitle(R.string.blood_tests_screen)
         viewModel.refreshAnalysis()
     }
 

@@ -3,6 +3,7 @@ package com.example.automatic_analytics_analyser.view.user
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -38,11 +39,16 @@ class LoginActivity : AbstractActivity() {
         preferences.edit().putBoolean("logged", false).apply()
         preferences.edit().remove("token").apply()
 
+        viewModel.loginError.observe(this, Observer {
+            Toast.makeText(this, it.errorMessage, Toast.LENGTH_LONG)
+        })
+
         viewModel.loginCompleted.observe(this, Observer {
-            if (!it.isNullOrEmpty()){
-                //TODO: Store token in preferences using repository
+            if (it){
                 Log.v(TAG, "Navigating to main screen after logging in")
                 startActivity(Intent(this, MainActivity::class.java))
+            } else {
+                Toast.makeText(this, "Ha habido un problema con el incio de sesión", Toast.LENGTH_LONG)
             }
         })
 

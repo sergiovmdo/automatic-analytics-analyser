@@ -20,6 +20,7 @@ import com.example.automatic_analytics_analyser.databinding.MedicationItemBindin
 import com.example.automatic_analytics_analyser.model.Appointment
 import com.example.automatic_analytics_analyser.model.Medication
 import com.example.automatic_analytics_analyser.view.fragments.AbstractFragment
+import com.example.automatic_analytics_analyser.view.fragments.DrawerActivity
 import com.example.automatic_analytics_analyser.view.fragments.medication.BindingMedicationItem
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
@@ -110,6 +111,8 @@ class CalendarFragment : AbstractFragment() {
             }
 
         })
+
+        (requireActivity() as DrawerActivity).supportActionBar!!.setTitle(R.string.calendar_screen)
 
         viewModel.refreshCalendar()
     }

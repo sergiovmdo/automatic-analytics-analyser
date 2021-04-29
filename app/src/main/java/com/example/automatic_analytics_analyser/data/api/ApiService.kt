@@ -9,7 +9,7 @@ interface ApiService {
     suspend fun newUser(@Body user: UserBuilder): TokenResponse
 
     @POST("login")
-    suspend fun getUser(@Body user: LoginUser): TokenResponse
+    suspend fun getUser(@Body user: LoginUser): Response<TokenResponse>
 
     @GET("user")
     suspend fun getUserProfile(@Header("Authorization") token: String): User

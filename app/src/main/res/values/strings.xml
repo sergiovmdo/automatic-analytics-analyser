@@ -13,6 +13,7 @@
     <string name="calendar_control_content">Control de %s</string>
     <string name="close">Cerrar</string>
     <string name="shareAnalysis">Los datos de la analítica son los siguientes: </string>
+    <string name="settings">Ajustes y perfil</string>
     <string name="analysisDate">El análisis se realizó en fecha: </string>
 
     <string name="analysisTitle">para realizar un control sobre: </string>

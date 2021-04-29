@@ -20,8 +20,8 @@ class LoginViewModel @Inject constructor(val repository: UserManagmentRepository
             return _loginError
         }
 
-    private val _loginCompleted = MutableLiveData<String>()
-    val loginCompleted: LiveData<String>
+    private val _loginCompleted = MutableLiveData<Boolean>()
+    val loginCompleted: LiveData<Boolean>
         get() = _loginCompleted
 
     init {
@@ -46,11 +46,11 @@ class LoginViewModel @Inject constructor(val repository: UserManagmentRepository
 
         if (!showError){
             viewModelScope.launch {
-                val token = repository.getUser(user)
-                if (token.isNullOrEmpty()){
+                val created = repository.getUser(user)
+                if (!created){
                     _loginError.value = ErrorType.LOGIN_PROBLEM
                 } else {
-                    _loginCompleted.value = token
+                    _loginCompleted.value = true
                 }
             }
         }

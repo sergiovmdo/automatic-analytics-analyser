@@ -34,12 +34,15 @@ class UserManagmentRepository @Inject constructor(val api: ApiService, val conte
         return response.token
     }
 
-    suspend fun getUser(user: LoginUser): String {
+    suspend fun getUser(user: LoginUser): Boolean {
         val response = api.getUser(user)
-        token = response.token
-        preferences.edit().putString("token", response.token).apply()
-        preferences.edit().putBoolean("logged", true).apply()
-        return response.token
+        if (response.isSuccessful) {
+            token = response.body()!!.token
+            preferences.edit().putString("token", token).apply()
+            preferences.edit().putBoolean("logged", true).apply()
+            return true
+        }
+        return false
     }
 
     suspend fun getUserProfile(): User {

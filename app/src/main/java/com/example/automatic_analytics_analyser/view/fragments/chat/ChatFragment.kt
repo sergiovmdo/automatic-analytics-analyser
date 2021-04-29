@@ -25,6 +25,7 @@ import com.example.automatic_analytics_analyser.databinding.FragmentChatBinding
 import com.example.automatic_analytics_analyser.model.Chat
 import com.example.automatic_analytics_analyser.view.MainActivity
 import com.example.automatic_analytics_analyser.view.fragments.AbstractFragment
+import com.example.automatic_analytics_analyser.view.fragments.DrawerActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
@@ -122,6 +123,8 @@ class ChatFragment : AbstractFragment() {
                 startActivity(intent)
             }
         })
+
+        (requireActivity() as DrawerActivity).supportActionBar!!.setTitle(R.string.chat_screen)
 
         viewModel.refreshChats()
     }

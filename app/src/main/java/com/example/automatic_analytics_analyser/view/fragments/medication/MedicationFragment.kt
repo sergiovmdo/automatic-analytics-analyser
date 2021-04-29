@@ -20,6 +20,7 @@ import com.example.automatic_analytics_analyser.model.Appointment
 import com.example.automatic_analytics_analyser.model.Medication
 import com.example.automatic_analytics_analyser.model.Medicine
 import com.example.automatic_analytics_analyser.view.fragments.AbstractFragment
+import com.example.automatic_analytics_analyser.view.fragments.DrawerActivity
 import com.example.automatic_analytics_analyser.view.fragments.analysis.BindingAnalysisItem
 import com.example.automatic_analytics_analyser.view.fragments.calendar.BindingCalendarItem
 import com.example.automatic_analytics_analyser.view.fragments.calendar.CalendarViewModel
@@ -84,6 +85,8 @@ class MedicationFragment : AbstractFragment() {
             }
 
         })
+
+        (requireActivity() as DrawerActivity).supportActionBar!!.setTitle(R.string.medication_screen)
 
         viewModel.refreshMedication()
     }
