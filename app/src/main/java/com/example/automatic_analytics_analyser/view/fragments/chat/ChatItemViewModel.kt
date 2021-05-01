@@ -9,6 +9,7 @@ import com.example.automatic_analytics_analyser.data.repositories.ChatRepository
 import com.example.automatic_analytics_analyser.data.repositories.UserManagmentRepository
 import com.example.automatic_analytics_analyser.model.*
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 class ChatItemViewModel @Inject constructor(val repository: ChatRepository) : ViewModel() {
@@ -33,9 +34,21 @@ class ChatItemViewModel @Inject constructor(val repository: ChatRepository) : Vi
         }
     }
 
-    fun createMessage(view: View) {
+    fun createMessage() {
         viewModelScope.launch {
-            repository.createMessage(SentMessage(_chat.value!!.id, message.value!!.content))
+            var messageContent = message.value!!.content
+            repository.createMessage(SentMessage(_chat.value!!.id, messageContent))
+            var m = Message(
+                1L,
+                messageContent,
+                Calendar.getInstance().timeInMillis,
+                chat.value!!.user
+            )
+
+            var localMessages = chat.value!!.messages.toMutableList()
+            localMessages.add(m)
+            _chat.value!!.messages = localMessages
+            _chat.postValue(_chat.value)
         }
     }
 

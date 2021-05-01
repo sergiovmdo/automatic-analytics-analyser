@@ -29,9 +29,9 @@
     <string name="medicationDisease">Mi medicación para controlar mi </string>
     <string name="appointmentDisease">Tengo cita para controlar mi </string>
     <string name="es">es: \n</string>
-    <string name="day">el día: \n</string>
-    <string name="hour">a la hora: \n</string>
-    <string name="in">en: \n</string>
+    <string name="day">el día: </string>
+    <string name="hour">a la hora: </string>
+    <string name="in">en: </string>
 
 
 

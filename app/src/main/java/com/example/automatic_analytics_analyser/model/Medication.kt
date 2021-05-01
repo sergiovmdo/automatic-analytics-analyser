@@ -9,7 +9,7 @@ data class Medication(
     fun showMedicines() : String {
         var medicinesText = ""
         medicines.forEach {
-            medicinesText += it.name + " " + it.dose + "\n"
+            medicinesText += it.name + " " + it.dose + "mg" + "\n"
         }
         return medicinesText
     }

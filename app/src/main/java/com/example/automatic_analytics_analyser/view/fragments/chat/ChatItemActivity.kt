@@ -1,6 +1,10 @@
 package com.example.automatic_analytics_analyser.view.fragments.chat
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -45,6 +49,22 @@ class ChatItemActivity : AbstractActivity() {
         viewModel.getChat(id)
         viewModel.onChatOpen(id)
 
+        binding.sendButton.setOnClickListener {
+            if (!binding.messageContent.text.isNullOrEmpty()) {
+                viewModel.createMessage()
+                binding.messageContent.text!!.clear()
+                hideKeyboard()
+            }
+        }
+    }
+
+    fun Activity.hideKeyboard() {
+        hideKeyboard(currentFocus ?: View(this))
+    }
+
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     override fun onDestroy() {

@@ -43,7 +43,7 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
                 secondSurname = "pepe",
                 birthDate = "06/09/1997",
                 mail = "pepe@gmail.com",
-                phoneNumber = ""
+                phoneNumber = "678652014"
             )
     }
 

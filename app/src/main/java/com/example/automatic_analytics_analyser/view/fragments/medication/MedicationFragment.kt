@@ -102,15 +102,16 @@ class MedicationFragment : AbstractFragment() {
     private fun parseMedicationContent(medicines: List<Medicine>): String {
         var medicinesText = ""
         medicines.forEach {
-            medicinesText += it.name + " " + it.dose + "\n\n"
+            medicinesText += it.name + " " + it.dose + "mg" + "\n\n"
         }
         return medicinesText
     }
 
     private fun shareMedication(medication: Medication) {
-        val shareText = "${resources.getString(R.string.medicationDisease)} ${medication.disease} " +
-                resources.getString(R.string.es)
-                "${parseMedicationContent(medication.medicines)} \n\n"
+        val shareText =
+            "${resources.getString(R.string.medicationDisease)} ${medication.disease} " +
+                    resources.getString(R.string.es) + "\n" +
+                    "${parseMedicationContent(medication.medicines)} \n\n"
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, shareText)
         startActivity(shareIntent)

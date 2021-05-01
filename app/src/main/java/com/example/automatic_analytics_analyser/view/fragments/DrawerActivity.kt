@@ -95,7 +95,7 @@ open class DrawerActivity : AbstractActivity() {
                     PrimaryDrawerItem().apply {
                         nameRes = R.string.main_screen
                         identifier = 1L
-                        iconRes = R.drawable.ic_logo
+                        iconRes = R.drawable.ic_prescripcion
 
                     },
                     null,

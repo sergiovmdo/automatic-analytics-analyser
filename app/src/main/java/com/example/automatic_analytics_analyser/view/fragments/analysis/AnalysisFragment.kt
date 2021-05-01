@@ -79,7 +79,7 @@ class AnalysisFragment : AbstractFragment() {
             ) {
                 MaterialDialog(activity!!).show {
                     title(R.string.analysisDialogTitle)
-                    var message: String = parseAnalysisContentToText(item.analysis.analysisData)
+                    var message: String = item.analysis.analysisData
                     message(text = message)
                     positiveButton(R.string.close)
                 }
@@ -133,9 +133,9 @@ class AnalysisFragment : AbstractFragment() {
         val shareText = "${resources.getString(R.string.shareAnalysis)} \n\n" +
                 "${resources.getString(R.string.analysisDate)} ${analysis.convertDate()} \n" +
                 "${resources.getString(R.string.analysisTitle)} ${analysis.disease} \n\n" +
-                "${resources.getString(R.string.analysisData)}  ${parseAnalysisContentToText(
+                "${resources.getString(R.string.analysisData)} \n\n ${
                     analysis.analysisData
-                )}"
+                }"
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, shareText)
         startActivity(shareIntent)

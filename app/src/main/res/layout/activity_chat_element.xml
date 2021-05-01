@@ -56,8 +56,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:backgroundTint="@color/primary"
             app:srcCompat="@drawable/ic_baseline_send_24"
-            app:tint = "@null"
-            android:onClick="@{viewModel.createMessage}"/>
+            app:tint = "@null" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
