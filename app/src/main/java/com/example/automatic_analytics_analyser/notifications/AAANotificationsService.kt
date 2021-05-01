@@ -64,6 +64,7 @@ class AAANotificationsService : FirebaseMessagingService() {
     private fun sendNotification(messageBody: String?, title: String?, category: String?) {
         val type = NotificationType.fromString(category!!)
         val intent = Intent(this, DrawerActivity::class.java)
+
         intent.putExtra("fragmentId", type.id)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(
@@ -74,7 +75,7 @@ class AAANotificationsService : FirebaseMessagingService() {
         val channelId = "AAAChannel"
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_logo)
+            .setSmallIcon(R.drawable.ic_prescripcion)
             .setContentTitle(title)
             .setContentText(messageBody)
             .setAutoCancel(true)

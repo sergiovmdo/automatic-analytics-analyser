@@ -1,7 +1,9 @@
 package com.example.automatic_analytics_analyser.notifications
 
-enum class NotificationType(val id: Long) {
-    ANALYSIS(2L), MEDICATION(3L), CALENDAR(4L), CHAT(2L), UNKNOWN(1L);
+import com.example.automatic_analytics_analyser.R
+
+enum class NotificationType(val id: Int) {
+    ANALYSIS(R.id.analysisFragment), MEDICATION(R.id.medicationFragment), CALENDAR(R.id.calendarFragment), CHAT(R.id.chatFragment), REVISION(R.id.medicationFragment),UNKNOWN(R.id.mainActivity);
 
     companion object {
         fun fromString(string: String): NotificationType {
