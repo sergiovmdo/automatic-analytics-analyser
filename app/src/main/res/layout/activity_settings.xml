@@ -11,6 +11,7 @@
             type="com.example.automatic_analytics_analyser.view.SettingsViewModel" />
 
         <import type="android.graphics.Color" />
+        <import type="android.view.View" />
     </data>
 
     <ScrollView
@@ -28,7 +29,6 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/open_sans_semibold"
-
                 android:text="Información de contacto"
                 android:textColor="#333333"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,6 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="16dp"
                 android:background="@android:color/darker_gray"
-
                 app:layout_constraintTop_toBottomOf="@+id/contact_info" />
 
             <TextView
@@ -49,9 +48,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="Email"
+                android:visibility="@{viewModel.user.mail == null? View.GONE: View.VISIBLE}"
                 android:textColor="#333333"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view" />
@@ -62,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
-
+                android:visibility="@{viewModel.user.mail == null? View.GONE: View.VISIBLE}"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="@={viewModel.user.mail}"
                 android:textColor="#777777"
@@ -75,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-
+                android:visibility="@{viewModel.user.phoneNumber == null? View.GONE: View.VISIBLE}"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="Teléfono"
                 android:textColor="#333333"
@@ -88,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
-
+                android:visibility="@{viewModel.user.phoneNumber == null? View.GONE: View.VISIBLE}"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="@={viewModel.user.phoneNumber}"
                 android:textColor="#777777"
@@ -101,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
 
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="Modificar contraseña"
                 android:textColor="#333333"
@@ -212,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
 
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="Selección de idioma"
                 android:textColor="#333333"

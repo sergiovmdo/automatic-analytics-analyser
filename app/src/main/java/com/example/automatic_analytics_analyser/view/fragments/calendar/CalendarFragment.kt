@@ -133,7 +133,7 @@ class CalendarFragment : AbstractFragment() {
             "${resources.getString(R.string.appointmentDisease)} ${appointment.disease} " +
                     "${resources.getString(R.string.day)} ${appointment.convertDate()} " +
                     "${resources.getString(R.string.hour)} ${appointment.convertTime()} " +
-                    "${resources.getString(R.string.`in`)} ${appointment.location} ."
+                    "${resources.getString(R.string.`in`)} ${appointment.location}."
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, shareText)
         startActivity(shareIntent)

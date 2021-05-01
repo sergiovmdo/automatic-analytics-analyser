@@ -16,7 +16,7 @@ fun <T> createApi(service: Class<T>): T {
 
     val retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl("http://192.168.1.44:9000/")
+        .baseUrl("http://automaticanalyzer-dev.eu-central-1.elasticbeanstalk.com/")
         .client(client)
         .build()
 

@@ -16,7 +16,7 @@
         android:id="@+id/container_register"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#e0fffc">
+        android:background="#fffffe">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/registerTitle"

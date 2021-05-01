@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AAA</string>
+    <string name="app_name">Mi centro de control digital</string>
     <string name="welcome">Hola</string>
     <string name="welcome_part2">Esto es el centro de control digital de tu salud</string>
     <string name="welcome_part2.1">¿Qué te gustaría consultar?</string>
@@ -36,7 +36,7 @@
 
 
     <string name="hypothyroidism">Hipotiroidismo</string>
-
+    <string name="activity_chatitem_title">Tu consulta</string>
 
 
     <string-array name="languages">
@@ -44,12 +44,12 @@
         <item>Català</item>
     </string-array>
     <string-array name="specialities">
-        <item>Mi enfermedad Crónica</item>
+        <item>Mi enfermedad crónica</item>
         <item>Ginecología</item>
         <item>Salud mental</item>
         <item>Geriátrica</item>
         <item>Pediátrica</item>
         <item>Familiar</item>
-        <item>Cuidados Quirúrgicos</item>
+        <item>Cuidados médico-quirúrgicos</item>
     </string-array>
 </resources>

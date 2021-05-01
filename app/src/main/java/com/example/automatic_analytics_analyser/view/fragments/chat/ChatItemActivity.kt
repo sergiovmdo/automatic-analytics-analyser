@@ -3,6 +3,7 @@ package com.example.automatic_analytics_analyser.view.fragments.chat
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -43,6 +44,7 @@ class ChatItemActivity : AbstractActivity() {
 
         viewModel.chat.observe(this, Observer {
             populateChat(it)
+            supportActionBar?.setTitle(it.nursingSpeciality)
         })
 
         val id = intent.getLongExtra("chatId", 0)
@@ -56,6 +58,11 @@ class ChatItemActivity : AbstractActivity() {
                 hideKeyboard()
             }
         }
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setTitle(getString(R.string.activity_chatitem_title))
     }
 
     fun Activity.hideKeyboard() {
@@ -76,5 +83,15 @@ class ChatItemActivity : AbstractActivity() {
         val items = data.messages.map { BindingMessageItem(it, data.user.dni) }
         itemAdapter.setNewList(items)
         binding.recycler.scrollToPosition(data.messages.size - 1)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+        return true
     }
 }

@@ -118,6 +118,7 @@ class ChatFragment : AbstractFragment() {
 
         viewModel.createdChat.observe(viewLifecycleOwner, Observer {
             it?.let { chat ->
+                viewModel.refreshChats()
                 val intent = Intent(requireActivity(), ChatItemActivity::class.java)
                 intent.putExtra("chatId", chat.id)
                 startActivity(intent)
@@ -126,6 +127,11 @@ class ChatFragment : AbstractFragment() {
 
         (requireActivity() as DrawerActivity).supportActionBar!!.setTitle(R.string.chat_screen)
 
+        viewModel.refreshChats()
+    }
+
+    override fun onResume() {
+        super.onResume()
         viewModel.refreshChats()
     }
 

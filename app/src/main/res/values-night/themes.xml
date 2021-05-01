@@ -2,13 +2,14 @@
     <!-- Base application theme. -->
     <style name="Theme.Automaticanalyticsanalyser" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#1AEBB2</item>
-        <item name="colorPrimaryVariant">#17C898</item>
+        <item name="colorPrimary">#1E91D6</item>
+        <item name="colorPrimaryVariant">#0072BB</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryVariant">#676BCD</item>
+        <item name="colorSecondary">#8FC93A</item>
+        <item name="colorSecondaryVariant">#E4CC37</item>
         <item name="colorOnSecondary">@color/black</item>
+        <item name="android:forceDarkAllowed" tools:ignore="NewApi">false</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

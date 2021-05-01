@@ -35,15 +35,15 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
     init {
         userProfile.value =
             UserBuilder(
-                dni = "333",
-                password = "pepe",
-                confirmPassword = "pepe",
-                name = "pepe",
-                firstSurname = "pepe",
-                secondSurname = "pepe",
-                birthDate = "06/09/1997",
-                mail = "pepe@gmail.com",
-                phoneNumber = "678652014"
+                dni = "",
+                password = "",
+                confirmPassword = "",
+                name = "",
+                firstSurname = "",
+                secondSurname = "",
+                birthDate = "",
+                mail = "",
+                phoneNumber = ""
             )
     }
 
