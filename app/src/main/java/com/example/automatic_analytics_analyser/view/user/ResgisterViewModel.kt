@@ -26,8 +26,8 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
             return _registerError
         }
 
-    private val _registerCompleted = MutableLiveData<String>()
-    val registerCompleted: LiveData<String>
+    private val _registerCompleted = MutableLiveData<Boolean>()
+    val registerCompleted: LiveData<Boolean>
         get() = _registerCompleted
 
 
@@ -118,13 +118,13 @@ class ResgisterViewModel @Inject constructor(val repository: UserManagmentReposi
         if (!showError) {
             //Save the user into DB and go back to login activity
             viewModelScope.launch {
-                val token = repository.createUser(user)
+                val created = repository.createUser(user)
                 repository.insertFCMToken(fcmToken)
-                if (token.isNullOrEmpty()) {
+                if (!created) {
                     _registerError.value =
                         ErrorType.API_PROBLEM
                 } else {
-                    _registerCompleted.value = token
+                    _registerCompleted.value = true
                 }
             }
         }

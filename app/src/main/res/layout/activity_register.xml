@@ -37,9 +37,9 @@
             android:layout_height="0dp"
 
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="8dp"
             android:fillViewport="true"
-            app:layout_constraintBottom_toTopOf="@+id/materialButton"
+            app:layout_constraintBottom_toTopOf="@+id/registerButton"
             app:layout_constraintTop_toBottomOf="@+id/registerTitle"
             app:layout_constraintVertical_bias="0.0"
             tools:layout_editor_absoluteX="16dp">
@@ -67,8 +67,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textCapWords"
-                        android:text="@={viewModel.userProfile.dni}"
-                        />
+                        android:text="@={viewModel.userProfile.dni}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -197,10 +196,10 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:hint="Fecha de nacimiento"
-                    app:placeholderText="18/07/2017"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/email_layout">
+                    app:layout_constraintTop_toBottomOf="@+id/email_layout"
+                    app:placeholderText="18/07/2017">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/birth_edit_text"

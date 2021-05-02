@@ -11,7 +11,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ChatRepository @Inject constructor(val api: ApiService, val context: Context) {
+class ChatRepository @Inject constructor(val api: ApiService, val context: Context) : AbstractRepository() {
     private lateinit var preferences: SharedPreferences;
     var token: String
     var openChat: Long? = null
@@ -25,10 +25,12 @@ class ChatRepository @Inject constructor(val api: ApiService, val context: Conte
     }
 
     suspend fun getChats(): List<Chat> {
+        token = getToken(context)
         return api.getChats(token)
     }
 
     suspend fun createChat(chat: ChatBuilder): Chat? {
+        token = getToken(context)
         val response: Response<Chat> = api.createChat(token, chat)
         if (response.isSuccessful) {
             return response.body()!!
@@ -38,6 +40,7 @@ class ChatRepository @Inject constructor(val api: ApiService, val context: Conte
     }
 
     suspend fun getChat(id: Long): ChatItem? {
+        token = getToken(context)
         val response: Response<ChatItem> = api.getChat(token, id)
         if (response.isSuccessful) {
             return response.body()!!
@@ -46,6 +49,7 @@ class ChatRepository @Inject constructor(val api: ApiService, val context: Conte
     }
 
     suspend fun createMessage(message: SentMessage) {
+        token = getToken(context)
         api.createMessage(token, message)
     }
 

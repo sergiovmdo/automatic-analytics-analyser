@@ -25,13 +25,16 @@ class UserManagmentRepository @Inject constructor(val api: ApiService, val conte
     }
 
     //Suspend is to make it asynchronous
-    suspend fun createUser(user: UserBuilder): String {
+    suspend fun createUser(user: UserBuilder): Boolean {
         val response = api.newUser(user)
-        token = response.token
-        preferences.edit().putString("token", response.token).apply()
-        preferences.edit().putBoolean("logged", true).apply()
+        if (response.isSuccessful) {
+            token = response.body()!!.token
+            preferences.edit().putString("token", token).apply()
+            preferences.edit().putBoolean("logged", true).apply()
+            return true
+        }
 
-        return response.token
+        return false
     }
 
     suspend fun getUser(user: LoginUser): Boolean {
@@ -42,6 +45,7 @@ class UserManagmentRepository @Inject constructor(val api: ApiService, val conte
             preferences.edit().putBoolean("logged", true).apply()
             return true
         }
+
         return false
     }
 

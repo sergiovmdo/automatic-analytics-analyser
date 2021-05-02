@@ -11,18 +11,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AnalysisRepository @Inject constructor(val api: ApiService, val context: Context) {
-    private lateinit var preferences: SharedPreferences;
-    var token: String
-
-    init {
-        preferences =
-            PreferenceManager.getDefaultSharedPreferences(context)
-
-        token = preferences.getString("token", "")!!
-    }
+class AnalysisRepository @Inject constructor(val api: ApiService, val context: Context) :
+    AbstractRepository() {
+    lateinit var token: String
 
     suspend fun getAnalysis(): List<Analysis> {
+        token = getToken(context)
         return api.getAnalysis(token)
     }
 }

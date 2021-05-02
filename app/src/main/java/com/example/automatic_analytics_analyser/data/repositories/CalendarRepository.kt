@@ -9,18 +9,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CalendarRepository @Inject constructor(val api: ApiService, val context: Context) {
-    private lateinit var preferences: SharedPreferences;
-    var token: String
+class CalendarRepository @Inject constructor(val api: ApiService, val context: Context) :
+    AbstractRepository() {
+    lateinit var token: String
 
-    init {
-        preferences =
-            PreferenceManager.getDefaultSharedPreferences(context)
-
-        token = preferences.getString("token", "")!!
-    }
-
-    suspend fun getAppointments() : List<Appointment> {
+    suspend fun getAppointments(): List<Appointment> {
+        token = getToken(context)
         return api.getAppointments(token)
     }
 }

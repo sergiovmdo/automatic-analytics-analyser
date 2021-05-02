@@ -104,7 +104,7 @@ class AnalysisFragment : AbstractFragment() {
             }
 
         })
-
+        
         (requireActivity() as DrawerActivity).supportActionBar!!.setTitle(R.string.blood_tests_screen)
         viewModel.refreshAnalysis()
     }

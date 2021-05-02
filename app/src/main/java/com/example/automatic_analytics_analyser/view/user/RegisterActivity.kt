@@ -39,9 +39,11 @@ class RegisterActivity : AbstractActivity() {
         binding.lifecycleOwner = this
 
         viewModel.registerCompleted.observe(this, Observer {
-            if (!it.isNullOrEmpty()) {
+            if (it) {
                 Log.v(TAG, "Navigating to main screen after registering")
                 startActivity(Intent(this, MainActivity::class.java))
+            } else {
+                Toast.makeText(this, getString(R.string.register_error), Toast.LENGTH_LONG).show()
             }
         })
 
@@ -79,20 +81,6 @@ class RegisterActivity : AbstractActivity() {
         })
 
         binding.registerButton.setOnClickListener {
-//            FirebaseMessaging.getInstance().deleteToken()
-//
-//            FirebaseMessaging.getInstance().getToken().addOnCompleteListener {
-//                val token = it.result.toString()
-//                viewModel.register(FCMToken(token))
-//            }
-//            FirebaseInstanceId.getInstance().instanceId
-//                .addOnCompleteListener { task: Task<InstanceIdResult> ->
-//                    if (task.isSuccessful) {
-//                        val token = task.result!!.token
-//                        //GOT the token!
-//                    }
-//                }
-
             FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
                 task
                 if (!task.isSuccessful) {
@@ -104,7 +92,6 @@ class RegisterActivity : AbstractActivity() {
                 val token = task.result
                 viewModel.register(FCMToken(token!!))
 
-                // Log and toast
             })
 
 

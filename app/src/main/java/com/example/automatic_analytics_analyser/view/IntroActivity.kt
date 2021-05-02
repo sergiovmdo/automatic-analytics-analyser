@@ -7,6 +7,7 @@ import android.os.Bundle
 import dagger.android.support.DaggerAppCompatActivity
 import android.preference.PreferenceManager
 import com.example.automatic_analytics_analyser.view.user.LoginActivity
+import java.lang.NullPointerException
 
 class IntroActivity : DaggerAppCompatActivity() {
 

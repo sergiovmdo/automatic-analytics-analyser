@@ -10,18 +10,11 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MedicationRepository @Inject constructor(val api: ApiService, val context: Context) {
-    private lateinit var preferences: SharedPreferences;
-    var token: String
-
-    init {
-        preferences =
-            PreferenceManager.getDefaultSharedPreferences(context)
-
-        token = preferences.getString("token", "")!!
-    }
+class MedicationRepository @Inject constructor(val api: ApiService, val context: Context) : AbstractRepository(){
+    lateinit var token: String
 
     suspend fun getMedication(): List<Medication>? {
+        token = getToken(context)
         val response: Response<List<Medication>> = api.getMedication(token)
         if (response.isSuccessful) {
             return response.body()!!

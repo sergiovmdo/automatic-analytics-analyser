@@ -37,6 +37,7 @@
 
     <string name="hypothyroidism">Hipotiroidismo</string>
     <string name="activity_chatitem_title">Tu consulta</string>
+    <string name="register_error">No se pudo completar el registro, inténtalo de nuevo más tarde</string>
 
 
     <string-array name="languages">
