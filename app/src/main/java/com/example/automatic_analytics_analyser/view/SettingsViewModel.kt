@@ -35,7 +35,6 @@ class SettingsViewModel @Inject constructor(val repository: UserManagmentReposit
 
     fun changeLanguage(language: String) {
         viewModelScope.launch {
-            //TODO: A toast must be shown when language is changed informing the user
             repository.changeLanguage(language)
             changeLanguage.postValue(language)
         }

@@ -73,8 +73,6 @@ class RegisterActivity : AbstractActivity() {
                     binding.emailEditText.setError(it.errorMessage)
                     binding.phoneEditText.setError(it.errorMessage)
                 }
-                ErrorType.WRONG_BIRTHDATE ->
-                    binding.birthEditText.setError(it.errorMessage)
                 ErrorType.API_PROBLEM ->
                     Toast.makeText(this, it.errorMessage, Toast.LENGTH_LONG).show()
             }

@@ -120,15 +120,6 @@ class AnalysisFragment : AbstractFragment() {
         itemAdapter.setNewList(items)
     }
 
-    private fun parseAnalysisContentToText(content: String): String {
-        var result = content.replace("\"", "")
-        result = result.replace("{", "")
-        result = result.replace("}", "")
-        result = result.replace(",", "\n\n")
-
-        return result
-    }
-
     private fun shareAnalysis(analysis: Analysis) {
         val shareText = "${resources.getString(R.string.shareAnalysis)} \n\n" +
                 "${resources.getString(R.string.analysisDate)} ${analysis.convertDate()} \n" +

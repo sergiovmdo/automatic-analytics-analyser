@@ -101,7 +101,7 @@ class AAANotificationsService : FirebaseMessagingService() {
     }
 
     override fun onDeletedMessages() {
-
+        //There is no need to implement this method.
     }
 
 }

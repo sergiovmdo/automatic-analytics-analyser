@@ -12,5 +12,5 @@ enum class ErrorType(val errorMessage: String) {
     WRONG_BIRTHDATE("Fecha inválida"),
     CONTACT_METHOD("Tienes que añadir al menos un método de contacto"),
     API_PROBLEM("No se ha podido crear el usuario"),
-    LOGIN_PROBLEM("Usuario o contraseña incorrectos")
+    LOGIN_PROBLEM("Usuario o contraseña incorrectos");
 }
