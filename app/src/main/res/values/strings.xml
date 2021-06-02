@@ -24,7 +24,7 @@
     <string name="sendMessageTitle">Escoge una especialidad y envía tu mensaje.</string>
     <string name="send">Enviar</string>
     <string name="analysisDialogTitle">Resultados</string>
-    <string name="changeLanguageMessage">Se ha cambiado el idioma de la aplicación</string>
+    <string name="changeLanguageMessage">Se ha cambiado el idioma de la aplicación, por favor reinicia para ver los cambios</string>
 
     <string name="medicationDisease">Mi medicación para controlar mi </string>
     <string name="appointmentDisease">Tengo cita para controlar mi </string>
@@ -38,6 +38,33 @@
     <string name="hypothyroidism">Hipotiroidismo</string>
     <string name="activity_chatitem_title">Tu consulta</string>
     <string name="register_error">No se pudo completar el registro, inténtalo de nuevo más tarde</string>
+    <string name="consult_button">Consultar</string>
+    <string name="medication_modified">Se han realizado cambios en la medicación</string>
+    <string name="medication_not_modified">No se han realizado cambios en la medicación</string>
+    <string name="language">Idioma</string>
+    <string name="language_text">Selección de idioma</string>
+    <string name="modify_password_text">Modificar contraseña</string>
+    <string name="chat_input_message">Escribe tu mensaje</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="register_text">Regístrate</string>
+    <string name="login_text">Inicia Sesión</string>
+    <string name="confirm_password">Confirma tu contraseña</string>
+    <string name="name_hint">Nombre</string>
+    <string name="first_surname_hint">Primer apellido</string>
+    <string name="second_surname_hint">Segundo apellido</string>
+    <string name="birthdate_hint">Fecha de nacimiento</string>
+    <string name="email_hint">Correo electrónico</string>
+    <string name="phone_hint">Teléfono</string>
+    <string name="contact_information">Información de contacto</string>
+    <string name="phone_text">Teléfono</string>
+    <string name="current_password_hint">Contraseña actual</string>
+    <string name="new_password_hint">Nueva contraseña</string>
+    <string name="confirm_text">Confirmar</string>
+    <string name="claim_button">Reclamar</string>
+    <string name="share_text">Compartir</string>
+    <string name="no_analyses">No tienes análisis disponibles</string>
+    <string name="speciality_hint">Especialidad</string>
+    <string name="chat_message_input_hint">Escribe tu consulta</string>
 
 
     <string-array name="languages">

@@ -9,14 +9,15 @@ data class Analysis(
     val date: Long,
     val disease: String,
     val analysisData: String,
-    val content: String
+    val content: String,
+    val modified: Boolean
 
 ) {
     fun convertDate(): String {
         return getTime(date, "dd/MM/yyyy")
     }
 
-    private fun getTime(date : Long, pattern : String) : String {
+    private fun getTime(date: Long, pattern: String): String {
         val df: DateFormat = SimpleDateFormat(
             pattern,
             Locale.getDefault()

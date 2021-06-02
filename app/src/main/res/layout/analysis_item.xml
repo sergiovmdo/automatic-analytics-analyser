@@ -55,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="@{analysis.content}"
+                        android:text="@{(analysis.modified == true) ? @string/medication_modified : @string/medication_not_modified}"
                         tools:text="Se han realizado cambios en la medicación"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary" />
@@ -75,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:text="Consultar"
+                        android:text="@string/consult_button"
                         android:textColor="@color/secondary"/>
 
                     <com.google.android.material.button.MaterialButton
@@ -83,7 +83,7 @@
                         style="?attr/borderlessButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Compartir"
+                        android:text="@string/share_text"
                         android:textColor="@color/secondary"/>
                 </LinearLayout>
 

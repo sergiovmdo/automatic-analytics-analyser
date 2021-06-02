@@ -54,6 +54,11 @@ class SettingsActivity : AbstractActivity() {
 
         viewModel.changeLanguage.observe(this, Observer {
             if (!it.isNullOrEmpty()) {
+                val l = resources.getStringArray(R.array.languages)
+                if (it.equals(l[0]))
+                    preferences.edit().putString("Language", "es").apply()
+                else
+                    preferences.edit().putString("Language", "ca").apply()
                 Toast.makeText(this, getString(R.string.changeLanguageMessage), Toast.LENGTH_LONG)
                     .show()
             }

@@ -15,7 +15,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="ExtraText">
 
         <TextView
             android:id="@+id/no_data_text"
@@ -55,7 +56,7 @@
 
             </LinearLayout>
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout> />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/new_chat_button"
@@ -67,7 +68,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_baseline_add_24"
-            />
+            android:contentDescription="" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

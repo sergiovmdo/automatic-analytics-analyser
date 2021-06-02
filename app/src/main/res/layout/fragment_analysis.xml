@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans_semibold"
 
-            android:text="No tienes análisis disponibles"
+            android:text="@string/no_analyses"
             android:textColor="#333333"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

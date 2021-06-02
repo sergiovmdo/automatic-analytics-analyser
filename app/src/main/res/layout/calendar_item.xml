@@ -73,7 +73,7 @@
                     style="?attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reclamar"
+                    android:text="@string/claim_button"
                     android:textColor="@color/secondary" />
 
                 <com.google.android.material.button.MaterialButton
@@ -81,7 +81,7 @@
                     style="?attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Compartir"
+                    android:text="@string/share_text"
                     android:textColor="@color/secondary"/>
             </LinearLayout>
 
